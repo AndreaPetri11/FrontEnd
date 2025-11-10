@@ -38,3 +38,13 @@ ul {
 .title {
     color: red;
 }
+img {
+    width: 200px;
+    height: auto;
+    position: fixed; /* Mantiene l'immagine fissa durante lo scorrimento */
+    z-index: 1; /* Assicura che l'immagine sia dietro gli altri contenuti */
+    right: 20px; /* Posiziona l'immagine a destra */
+    top: 5px; /* Posiziona l'immagine in alto */
+    opacity: 0.5; /* Imposta l'opacità per un effetto di trasparenza */
+    border-radius: 50%; /* Rende l'immagine circolare */
+}

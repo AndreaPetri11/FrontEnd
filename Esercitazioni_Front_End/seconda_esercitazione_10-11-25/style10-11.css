@@ -1,0 +1,134 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    }
+
+
+
+/*ESERCIZIO 1
+
+#tit_1 {
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+    border: solid 5px blue;
+    margin: 30px;
+    text-align: right;
+}
+
+p1 {
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    border: dashed 2px green;
+    margin: 10px;
+}
+*/
+
+
+
+/*ESERCIZIO 2
+
+#tit_2 {
+    border: dotted 10px red;
+    margin: 50px 600px 100px 100px;
+    text-align: right;
+
+}
+
+p2 {
+    border: solid 10px green;
+    margin: 1px 70px 50px 10px;
+}
+
+ol1 {
+    border: dashed 10px orange;
+    margin: 20px 30px 40px 50px;
+}
+li {
+    border: groove 10px yellow;
+    margin: 10px 900px 30px 40px;
+}
+*/
+
+
+/*ESERCIZIO 3
+
+div {
+    background-color: grey;
+    width: 400px;
+    height: 400px;
+   box-sizing: border-box;
+   border: solid 10px black;
+   padding: 121px;
+   margin: 20px;
+}
+
+a {
+    color: black;
+    text-align: center; 
+    display: block; 
+    padding-top: 5%; 
+    margin-top: 55px;
+    background-color: cyan;  
+    }
+*/
+
+
+
+/*ESERCIZIO 4
+
+#div1 {
+    background-color: grey;
+    box-sizing: border-box;
+    border: solid 10px black;
+    padding: 20px;
+    margin: 20px;
+}
+.es4 {
+    color: black;
+    text-align: center;
+    display: block;
+    padding-top: 5%;
+    margin-top: 55px;
+    background-color: cyan;
+}
+
+#div2 {
+    background-color: grey;
+    box-sizing: border-box;
+    border: solid 10px black;   
+}
+
+#div3 {
+    background-color: grey;
+    box-sizing: border-box;
+    border: solid 10px black;
+    padding: 5px 10px 15px;
+    margin: 20px;
+}
+*/
+
+
+/*ESERCIZIO 5*/
+
+
+
+/*ESERCIZIO 6*/
+
+
+
+/*ESERCIZIO 7*/
+
+
+
+/*ESERCIZIO 8*/
+
+
+
+/*ESERCIZIO 9*/
+
+
+
+/*ESERCIZIO 10*/
