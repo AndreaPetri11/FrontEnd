@@ -11,7 +11,85 @@
     2) Stile nell'Head - interno ma non inline ma nell'Head
     3) Foglio di stile separato - quindi in un nuovo file 
     (I 3 METODI POSSONO COESISTERE)
-    
     -->
+
+    <!-- 1) Stile inline -->
+    <h1 style="color: blue; text-align: center">
+      Questo è un titolo di livello 1 con stile inline
+    </h1>
+    <!-- 2) Stile nell'Head -->
+    <style>
+      h2 {
+        color: green;
+        text-align: center;
+      }
+    </style>
+    <h2>Questo è un titolo di livello 2 con stile nell'Head</h2>
+    <!-- 3) Foglio di stile separato
+    <link rel="stylesheet" href="stile.css" />  
+    
+    <! --BOX MODEL CSS:
+    Ogni elemento HTML è rappresentato come un rettangolo composto da:
+    - MARGINE (margin): spazio esterno all'elemento
+    - BORDO (border): linea che circonda l'elemento
+    - PADDING: spazio interno tra il contenuto e il bordo
+    - CONTENUTO (content): area dove viene visualizzato il contenuto (testo, immagini, ecc.)
+    1) width e height definiscono la larghezza e l'altezza del contenuto
+    2) box-sizing: border-box include padding e border nella larghezza e altezza
+    3) reset di default per margin e padding a 0
+    4) unità di misura: px, %, em, rem, vw, vh
+    5) dimensione del font: font-size
+    6) eredità delle proprietà CSS dai genitori ai figli
+    7) selettori CSS: tag, classi, id
+    -->
+
+    <!-- SELETTORI CSS:
+
+    - selettore di CLASSE: 
+      class="nomeclasse"
+      per richiamarla in css si usa:        .nomeclasse
+
+    - selettore di ID:
+      id="nomeid"
+      per richiamarla in css si usa:        #nomeid
+
+    - selettore di TAG:
+      p, h1, div, section, article, ecc.
+      per richiamarla in css si usa:        p, h1, div, section, article, ecc.
+    -->
+
+    <!-- UNITA' DI MISURA:
+        - FISSE:
+          px - pixel
+          cm - centimetri
+          mm - millimetri
+          in - pollici
+          pt - punti (1/72 di pollice)
+          pc - pica (1 pica = 12 punti)
+
+        - RESPONSIVE:
+          % - percentuale (rispetto al contenitore padre)
+          em - relativa alla dimensione del font del genitore
+          rem - relativa alla dimensione del font della radice (html)
+          vw - viewport width (1vw = 1% della larghezza della finestra)
+          vh - viewport height (1vh = 1% dell'altezza della finestra)
+          -->
+
+    <!-- POSITIONING CSS:
+          - static - posizione predefinita (default)
+          - relative - posizione relativa alla sua posizione originale
+          - absolute - posizione assoluta rispetto al primo antenato posizionato
+          - fixed - posizione fissa rispetto alla finestra del browser
+          - sticky - posizione relativa fino a un certo punto, poi fissa 
+        -->
+
+    <!-- PSEUDO SELETTORI
+          - :hover - quando il cursore passa sopra l'elemento
+          - :active - quando l'elemento è attivo (cliccato)
+          - :focus - quando l'elemento è focalizzato (ad esempio un input selezionato)
+          - :first-child - il primo figlio di un genitore
+          - :last-child - l'ultimo figlio di un genitore
+          - :nth-child(n) - il n-esimo figlio di un genitore
+          -->
   </body>
 </html>

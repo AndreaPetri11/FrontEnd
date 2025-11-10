@@ -9,23 +9,59 @@
         margin: 0px; /* reset di default */
         padding: 0%; /* reset di default */
         box-sizing: border-box; /* include padding e border nella larghezza e altezza */
+        font-size: 32px; /* dimensione del font di default */
       }
       p {
         padding: 20px 10px 50px 40px;
         border: 20px solid red;
         margin: 40px;
+        /*display: none; /* per rimuovere il paragrafo dal layout (non occupa lo spazio a differenza di visibility: hidden) */
       }
+
       div {
-        width: 300px; /* larghezza del contenuto */
-        height: 300px; /* altezza del contenuto */
+        width: 80vw; /* larghezza del contenuto */
+        height: 80vh; /* altezza del contenuto */
+        /* min-height: 100px; /* altezza minima */
         background-color: pink; /* colore di sfondo */
         margin: 50px; /* spazio esterno */
         border: 10px solid blue; /* bordo */
-        padding: 30px; /* spazio interno */
+        position: relative;
+      }
+
+      :hover div {
+        background-color: lightblue; /* cambia colore di sfondo al passaggio del mouse */
+      }
+
+      p1 {
+        font-size: 1em; /* dimensione del font relativa al genitore */
+        display: none;
+      }
+
+      section {
+        background-color: red;
+        visibility: hidden; /* nasconde l'elemento ma mantiene lo spazio occupato */
+      }
+
+      span {
+        background-color: violet;
+        border-radius: 50%; /* rende lo span circolare */
+        padding: 30px;
+        position: absolute; /* posizione assoluta rispetto al primo antenato posizionato */
+        bottom: -45px;
+        right: -74px;
+      }
+      :hover span {
+        background-color: purple;
       }
     </style>
   </head>
   <body>
+    <div>
+      <section>SECTION</section>
+      <p1>Sono un paragrafo</p1>
+      <br />
+      <span>Span</span>
+    </div>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, ad!
       Necessitatibus, consectetur sequi adipisci delectus, nam, quibusdam
@@ -62,6 +98,5 @@
       velit quos, facilis ullam, corporis soluta distinctio, deserunt porro
       labore at rerum. Nam!
     </p>
-    <div></div>
   </body>
 </html>
