@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagina Registrazione Utente</title>
+  </head>
+  <body>
+    <body>
+    <ul><a href="esercitazione.html">
+            <img src="img07-11/homepage.png" alt="Link per tornare alla Homepage" width="20" height="20"
+                title="Torna alla Homepage">
+        </a></ul>
+    <h1 id="paginaregistrazioneutente">Registrazione utente</h1>
+    <form>
+        <fieldset>
+            <legend>Inserisci qua i tuoi dati per effettuare la registrazione</legend>
+            <br>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" placeholder="scrivi qua il tuo nome" required>
+            <br>
+            <br>
+            <label for="cognome">Cognome:</label>
+            <input type="text" name="cognome" placeholder="scrivi qua il tuo cognome" required>
+            <br>
+            <br>
+            <label for="datadinascita">Data di nascita:</label>
+            <input type="date" required>
+            <br>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" placeholder="inserire un'email valida" required>
+            <br>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" placeholder="crea una nuova password"
+                title="(la password non richiede l'utilizzo di criteri specifici)" required>
+            <br>
+            <br>
+            <textarea
+                placeholder="Scrivi qua se hai necessità di comunicarci delle informazioni aggiuntive o porci delle domande..."
+                width="450" height="50"></textarea>
+            <br>
+            <br>
+            <input type="radio" name="genere" value="M"> Uomo
+            <input type="radio" name="genere" value="F"> Donna
+            <input type="radio" name="genere" value="Nessuno"> Non mi identifico in nessun genere
+            <br>
+            <br>
+            <label for="posizione">Posizione lavorativa che stai cercando:</label>
+            <input type="text" name="posizione" placeholder="che lavoro cerchi" title="mansione cercata">
+            <br>
+            <br>
+            <label for="ruolo">Posizione lavorativa che ricopri adesso:</label>
+            <input type="text" name="favteam" placeholder="la tua attuale mansione" title="mansione svolta">
+            <br>
+            <br>
+            <!-- Tasto di invio dati -->
+            <input type="submit" value="Invia"></input>
+  </body>
+</html>

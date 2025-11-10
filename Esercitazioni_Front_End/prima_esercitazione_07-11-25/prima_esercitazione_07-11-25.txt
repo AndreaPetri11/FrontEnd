@@ -1,0 +1,7 @@
+esercitazione
+- header img / nav /min. 3a (link)
+- main 
+titolo/sottotitolo/paragrafo
+- section /table
+- section /form
+- footer /qualche a
