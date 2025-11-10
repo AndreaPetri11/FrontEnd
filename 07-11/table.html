@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+  </head>
+  <body>
+    <h1>Catalogo dei corsi di formazione</h1>
+    <!--Apertura della tabella-->
+    <table border="1" width="80%" align="center">
+      <!-- Didascalia/descrizione della tabella-->
+      <caption>
+        Offerta formativa 2025
+      </caption>
+      <thead>
+        <tr>
+          <!-- tr righe della tabella -->
+          <!--th teste della tabella (celle di intestazione)-->
+          <th>Categoria</th>
+          <th>Corso</th>
+          <th>Durata</th>
+          <th>Livello</th>
+          <th>Docente</th>
+        </tr>
+      </thead>
+      <!--tbody Corpo principale della tabella-->
+      <tbody>
+        <tr>
+          <td>Sviluppo Web</td>
+          <td>HTML</td>
+          <td>30 ore</td>
+          <td>Base</td>
+          <td>Giovanni</td>
+        </tr>
+
+        <tr>
+          <td>Sviluppo Web</td>
+          <td>JavaScript</td>
+          <td>40 ore</td>
+          <td>Intermedio</td>
+          <td>Giovanni</td>
+        </tr>
+
+        <tr>
+          <td>Design</td>
+          <td>UI/UX Design</td>
+          <td>25 ore</td>
+          <td>Base</td>
+          <td>Lucia</td>
+        </tr>
+
+        <tr>
+          <!--Riga informativa-->
+          <!--Colspan unisce le caselle in orizzontale-->
+          <td colspan="5">Tutti i corsi includono materiale didattico</td>
+        </tr>
+      </tbody>
+      <!--Piè di tabella-->
+      <tfoot>
+        <tr>
+          <td colspan="5">Totale corsi</td>
+          <td>3</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

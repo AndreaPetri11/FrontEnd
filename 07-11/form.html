@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Example</title>
+</head>
+<body>
+    <h1>Form Example</h1>
+    <form action="mailto:ginojitzu@hotmail.com">
+        <fieldset>
+                <legend>Informazioni personali</legend>
+    <label for="name">Il tuo nome:</label>
+    <input type="text" id="name" name="name" required placeholder="inserisci nome e cognome"/>
+    <br>
+    <br>
+    <label for="eta">La tua età:</label>
+    <input type="number" id="eta" name="eta" min="1" required placeholder="inserisci la tua età"/><br />
+    <br>
+    <br>
+    <label for="email">La tua e-mail:</label>
+    <input type="email" id="email" name="email" required placeholder="inserisci una email valida"/>
+    <br>
+    <br>
+    <label for="phonenumber">Inserisci il tuo numero di cellulare:</label>
+        <input type="tel" id="phonenumber" name="phonenumber" required placeholder="inserisci il tuo numero di cellulare"/>
+    <br />
+    <br />
+        <label for="attachment">Allega il tuo documento d'identità:</label>
+        <input type="file" id="attachment" name="attachment" required />
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+            <legend>Contattaci</legend> 
+    <label for="message">Il tuo messaggio:</label>
+    <textarea id="message" name="message" required></textarea>
+    <br />
+    <br />
+    <label for="date">Data di oggi</label>
+        <input type="date" id="date" name="date" required />
+    
+    </fieldset>
+    <br>
+    <br>
+    <input type="submit"></input>
+</form>
+</body>
+</html>
