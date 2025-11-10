@@ -5,7 +5,6 @@
     }
 
 
-
 /*ESERCIZIO 1
 
 #tit_1 {
@@ -59,10 +58,10 @@ div {
     background-color: grey;
     width: 400px;
     height: 400px;
-   box-sizing: border-box;
-   border: solid 10px black;
-   padding: 121px;
-   margin: 20px;
+    box-sizing: border-box;
+    border: solid 10px black;
+    padding: 121px;
+    margin: 20px;
 }
 
 a {
@@ -108,13 +107,33 @@ a {
     padding: 5px 10px 15px;
     margin: 20px;
 }
+
 */
 
+/*ESERCIZIO 5
 
-/*ESERCIZIO 5*/
+#p1-es5 {
+  display: inline;
+  color: red;
+}
 
+#p2-es5 {
+    display: inline;
+    color: purple;
+}
 
+#p3-es5 {
+    display: inline-block;
+    color: blue;   
+    width: 300px;
+    background-color: aqua;
+}
 
+#p4-es5 {
+    display: none;
+    color: black;
+}
+*/
 /*ESERCIZIO 6*/
 
 
