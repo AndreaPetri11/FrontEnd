@@ -1,0 +1,36 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div {
+    width: 80px;
+    height:80px;
+    border: 1px solid black;
+    display: flex; /* per usare flexbox */
+    flex-direction: column; /* per allineare il testo in colonna */
+    justify-content: center; /* per centrare verticalmente il contenuto */
+    align-items: center; /* per centrare orizzontalmente il contenuto */
+}
+
+section {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* per centrare orizzontalmente */
+    align-items: center;     /* per centrare verticalmente */
+    height: 100vh;          /* altezza viewport */
+    flex-wrap: wrap;       /* per andare a capo se necessario */
+}
+
+h2 {
+    font-size: 10px;
+}
+
+footer {
+    font-size: 15px;
+}   
+
+img {
+    width: 40px;
+}
