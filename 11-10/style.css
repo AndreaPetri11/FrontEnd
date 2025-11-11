@@ -1,3 +1,5 @@
+/*import del font desiderato*/
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * {
     margin: 0;
@@ -12,6 +14,9 @@ div {
     flex-direction: column; /* per allineare il testo in colonna */
     justify-content: center; /* per centrare verticalmente il contenuto */
     align-items: center; /* per centrare orizzontalmente il contenuto */
+    font-family: "Barrio", system-ui; /*richiamo del font*/
+    font-weight: 400;
+    font-style: normal;
 }
 
 section {
