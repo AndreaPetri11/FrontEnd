@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex-Grow</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        border: 10px solid red;
+        height: 80px;
+      }
+
+      .box {
+        flex-basis: 50px; /*valore di base, quanto spazio minimo deve prendersi */
+        color: black;
+        border: 5px solid yellow;
+        font-size: 50px;
+        text-align: center;
+      }
+
+      .grow {
+        height: 500px; /*spazio totale disponibile per gli elementi figli */
+      }
+
+      .box1 {
+        background-color: lightblue;
+        flex-grow: 1; /*valore di crescita rispetto agli altri elementi */
+      }
+      .box2 {
+        background-color: lightgreen;
+        flex-grow: 5; /*valore di crescita rispetto agli altri elementi */
+      }
+      .box3 {
+        background-color: mediumpurple;
+        flex-grow: 0, 5; /*valore di crescita rispetto agli altri elementi */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container grow">
+      <div class="box box1">1</div>
+      <div class="box box2">2</div>
+      <div class="box box3">3</div>
+    </div>
+  </body>
+</html>
