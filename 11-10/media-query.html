@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Query</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-size: 30px;
+      }
+      a {
+        margin: 10px;
+        text-decoration: none;
+        color: black;
+        background-color: lightgray;
+        font-family: "Courier New", Courier, monospace;
+        border: 5px solid black;
+        border-radius: 10px;
+        display: block;
+        padding: 10px;
+        text-align: center;
+        margin-right: auto;
+      }
+      nav {
+        display: flex;
+        flex-direction: row;
+        border: 5px solid black;
+        margin-right: auto;
+      }
+      @media (max-width: 600px) {
+        /* se la larghezza della finestra è minore o uguale a 600px */
+        body {
+          background-color: rgba(0, 255, 242, 0.314);
+          font-size: 18px;
+        }
+        nav {
+          background-color: red;
+          color: white;
+          font-weight: bold;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+        }
+      }
+
+      @media print {
+        /* se si stampa la pagina */
+        body {
+          font-size: 12px;
+          color: black;
+          background-color: white;
+        }
+      }
+      /* Le media query servono per rendere il sito web reattivo in base alla dimensione della finestra del browser */
+      /* Possono essere usate per cambiare stili CSS in base alla larghezza, altezza, orientamento, risoluzione, ecc. */
+      /* Possono essere combinate più condizioni usando "and", "or", "not" */
+      /* Esempio: @media (min-width: 601px) and (max-width: 1200px) { ... } */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>TITOLO</h1>
+      <nav>
+        <a href="">Item1</a>
+        <a href="">Item2</a>
+        <a href="">Item3</a>
+      </nav>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid
+        explicabo deserunt recusandae molestiae ducimus. Numquam quibusdam nobis
+        earum, explicabo porro rem, cum, asperiores ut doloremque quis voluptas.
+        Facere, eveniet accusantium! Corrupti minima iusto, voluptatibus fugiat
+        accusamus modi eveniet est sequi odit facilis ex molestiae non
+        voluptatum ut incidunt impedit culpa excepturi aliquid, assumenda
+        dolore. Nam facere culpa provident magnam voluptatem?
+      </p>
+    </header>
+  </body>
+</html>
