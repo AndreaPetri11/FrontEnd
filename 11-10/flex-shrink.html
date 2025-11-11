@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex-Shrink</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        border: 5px solid orange;
+        flex-direction: row;
+      }
+
+      .box {
+        flex-basis: 150px; /*valore di base, quanto spazio minimo deve prendersi */
+        color: rgb(0, 0, 0);
+        border: 5px solid black;
+        font-size: 50px;
+        text-align: center;
+      }
+
+      .shrink {
+        width: 450px; /*spazio totale disponibile per gli elementi figli */
+      }
+      .box1 {
+        background-color: lightcoral;
+        flex-shrink: 1; /*valore di riduzione rispetto agli altri elementi, questo con 1 si riduce di meno */
+      }
+      .box2 {
+        background-color: lightseagreen;
+        flex-shrink: 2; /*valore di riduzione rispetto agli altri elementi */
+      }
+      .box3 {
+        background-color: lightgoldenrodyellow;
+        flex-shrink: 3; /*valore di riduzione rispetto agli altri elementi, questo con 3 si riduce di più */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container shrink">
+      <div class="box box1">A</div>
+      <div class="box box2">B</div>
+      <div class="box box3">C</div>
+    </div>
+  </body>
+</html>
