@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esercitazione 11-11 (Flexbox)</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        background-color: red;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      /* Contenitore principale delle colonne */
+      .content {
+        flex: 1;
+        display: flex;
+        flex-direction: row; /* 3 colonne affiancate */
+        min-height: calc(100vh - 120px); /* Altezza meno header/footer */
+      }
+
+      .left {
+        background-color: orange;
+        width: 200px;
+        padding: 20px;
+        position: sticky;
+        top: 60px;
+        height: calc(100vh - 120px);
+        overflow: auto;
+        text-align: center;
+      }
+
+      .main {
+        flex: 1;
+        background-color: lightgray;
+        padding: 20px;
+        overflow-y: auto;
+        height: calc(100vh - 120px);
+        text-align: center;
+      }
+
+      .right {
+        background-color: greenyellow;
+        width: 200px;
+        padding: 20px;
+        position: sticky;
+        top: 60px;
+        height: calc(100vh - 120px);
+        overflow: auto;
+        text-align: center;
+      }
+
+      .footer {
+        background-color: lightskyblue;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* MEDIA QUERY TABLET */
+      @media (max-width: 1024px) {
+        .content {
+          flex-direction: column; /* Colonne diventano righe */
+        }
+
+        .main {
+          order: 1;
+          height: auto;
+        }
+
+        .left,
+        .right {
+          order: 2;
+          width: 100%;
+          position: static;
+          height: auto;
+          overflow: visible;
+        }
+
+        .footer {
+          order: 3;
+        }
+      }
+
+      /* MEDIA QUERY MOBILE */
+      @media (max-width: 768px) {
+        .content {
+          flex-direction: column;
+        }
+
+        .main,
+        .left,
+        .right {
+          width: 100%;
+          position: static;
+          height: auto;
+          overflow: visible;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">Header</div>
+
+    <div class="content">
+      <div class="left">Left</div>
+
+      <div class="main">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+        molestiae error suscipit autem nobis cum officia sit odit nesciunt minus
+        inventore, blanditiis, voluptatibus voluptates eligendi eveniet eaque
+        ullam, odio harum.
+        <br /><br />
+        Aliquam natus officia ipsum quos, excepturi velit similique cum deserunt
+        temporibus delectus enim molestiae quaerat perspiciatis saepe, provident
+        asperiores minima incidunt sequi unde.
+        <br /><br />
+        <!-- Puoi lasciare il resto del testo lungo qui -->
+      </div>
+
+      <div class="right">Right</div>
+    </div>
+
+    <div class="footer">Footer</div>
+  </body>
+</html>
