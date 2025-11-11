@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GRID</title>
+    <style>
+      .parent {
+        /* contenitore grid */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 8px;
+        background-color: lightgreen;
+      }
+      div {
+        /* elementi grid */
+        background-color: lightblue;
+        border: 2px solid navy;
+        font-size: 2em;
+        text-align: center;
+        padding: 20px;
+      }
+      .div1 {
+        grid-row: span 3 / span 3;
+      }
+
+      .div4 {
+        grid-column: span 2 / span 2;
+        grid-column-start: 2;
+      }
+
+      .div5 {
+        grid-column: span 2 / span 2;
+        grid-column-start: 2;
+        grid-row-start: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="parent">
+        <!-- contenitore grid -->
+        <div class="div1">1</div>
+        <div class="div2">2</div>
+        <div class="div3">3</div>
+        <div class="div4">4</div>
+        <div class="div5">5</div>
+      </div>
+    </section>
+  </body>
+</html>
