@@ -10,7 +10,20 @@
         --colore-secondario: pink;
         --colore-sfondo: grey;
         --testo-base: 18px;
-        margin: 30px;
+        --bg-color:white;
+        --text-color: black;
+        --bg-color-dark: rgb(0, 0, 0);
+        --text-color-dark: rgb(255, 255, 255);
+    }
+
+    body {
+        background: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    body.dark {
+        --bg-color: var(--bg-color-dark);
+        --text-color: var(--text-color-dark);
     }
 
     h1 {
