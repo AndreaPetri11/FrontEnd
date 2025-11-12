@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guida compatta ai selettori CSS</title>
+    <style>
+      /* ======== STILI BASE DELLA PAGINA ======== */
+      body {
+        font-family: system-ui, sans-serif;
+        background: #f8f9fa;
+        color: #222;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+      }
+      h2 {
+        color: #0077cc;
+        border-bottom: 2px solid #0077cc;
+        padding-bottom: 5px;
+      }
+      button.toggle {
+        margin-top: 10px;
+        background: #0077cc;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button.toggle:hover {
+        background: #005fa3;
+      }
+      pre {
+        display: none;
+        background: #272822;
+        color: #e0e0e0;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 10px;
+        overflow-x: auto;
+      }
+      a {
+        color: #0077cc;
+      }
+      a:hover {
+        color: red;
+      }
+      input:focus {
+        border: 2px solid #0077cc;
+      }
+
+      /* ======== LEGENDA COLORATA ======== */
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .legend span {
+        padding: 6px 10px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 14px;
+      }
+      .base {
+        background: #0077cc;
+      }
+      .comb {
+        background: #9c27b0;
+      }
+      .attr {
+        background: #ff9800;
+      }
+      .pseudo {
+        background: #4caf50;
+      }
+      .element {
+        background: #e91e63;
+      }
+      .adv {
+        background: #795548;
+      }
+
+      /* ======== 1️⃣ SELETTORI DI BASE ======== */
+      * {
+        box-sizing: border-box;
+      } /* tutti gli elementi */
+      p.base {
+        color: darkslategray;
+      } /* paragrafo con classe .base */
+      .intro {
+        background: #e0f7fa;
+      } /* .classe */
+      #special {
+        background: #ffeaa7;
+      } /* #id */
+
+      /* ======== 2️⃣ SELETTORI COMBINATORI ======== */
+      div p {
+        color: purple;
+      } /* discendenti */
+      div > p {
+        font-weight: bold;
+      } /* figli diretti */
+      h3 + p {
+        color: green;
+      } /* elemento subito dopo */
+      h3 ~ p {
+        text-decoration: underline;
+      } /* fratelli successivi */
+
+      /* ======== 3️⃣ SELETTORI DI ATTRIBUTO ======== */
+      [title] {
+        border-bottom: 2px dotted #888;
+      }
+      [type="text"] {
+        background: #fafafa;
+      }
+      [href^="https"] {
+        color: teal;
+      }
+      [href$=".pdf"] {
+        color: crimson;
+      }
+
+      /* ======== 4️⃣ PSEUDO-CLASSI ======== */
+      li:first-child {
+        color: blue;
+      }
+      li:last-child {
+        color: red;
+      }
+      li:nth-child(2) {
+        background: #ffeaa7;
+      }
+      div:not(.skip) {
+        border: 1px solid #ccc;
+      }
+      input:checked + label {
+        font-weight: bold;
+        color: green;
+      }
+
+      /* ======== 5️⃣ PSEUDO-ELEMENTI ======== */
+      p::first-letter {
+        font-size: 1.5em;
+        color: #0077cc;
+      }
+      p::before {
+        content: "→ ";
+        color: gray;
+      }
+      p::after {
+        content: " ✔";
+        color: green;
+      }
+
+      /* ======== 6️⃣ SELETTORI AVANZATI ======== */
+      :is(h1, h2) {
+        color: #0066cc;
+      }
+      article:has(img) {
+        border: 2px solid #0066cc;
+        padding: 5px;
+      }
+
+      /* ======== 7️⃣ INTERATTIVI ======== */
+      .box-hover {
+        background: #e0f7fa;
+        padding: 10px;
+        border: 2px solid #0077cc;
+        width: 200px;
+        text-align: center;
+        transition: 0.3s;
+      }
+      .box-hover:hover {
+        background: #0077cc;
+        color: #fff;
+      }
+
+      input.demo:focus {
+        border: 2px solid #e91e63;
+        outline: none;
+      }
+
+      .toggle-area {
+        margin-top: 10px;
+      }
+      .toggle-area input:checked + div {
+        background: #4caf50;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .container-not div:not(.skip-demo) {
+        background: #ffeb3b;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>💡 Guida compatta ai selettori CSS</h1>
+    <p style="text-align: center">
+      Apri questo file nel browser per vedere gli effetti dei selettori CSS.<br />
+      Clicca su “Mostra CSS” per visualizzare il codice di ogni sezione.
+    </p>
+
+    <!-- LEGENDA COLORATA -->
+    <div class="legend">
+      <span class="base">Base</span>
+      <span class="comb">Combinatori</span>
+      <span class="attr">Attributo</span>
+      <span class="pseudo">Pseudo-classi</span>
+      <span class="element">Pseudo-elementi</span>
+      <span class="adv">Avanzati</span>
+    </div>
+
+    <!-- 1️⃣ SELETTORI BASE -->
+    <section>
+      <h2>1️⃣ Selettori base</h2>
+      <p class="base">Questo è un paragrafo normale.</p>
+      <p class="intro">Questo ha una classe <code>.intro</code>.</p>
+      <p id="special">Questo ha un <code>#id</code>.</p>
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+* { box-sizing: border-box; }
+p.base { color: darkslategray; }
+.intro { background: #e0f7fa; }
+#special { background: #ffeaa7; }
+</pre
+      >
+    </section>
+
+    <!-- 2️⃣ COMBINATORI -->
+    <section>
+      <h2>2️⃣ Selettori combinatori</h2>
+      <div>
+        <p>Discendente di un div (viola).</p>
+        <p>Altro paragrafo figlio diretto (grassetto).</p>
+      </div>
+      <h3>Titolo H3</h3>
+      <p>Paragrafo subito dopo H3 (verde).</p>
+      <p>Altro paragrafo dopo H3 (sottolineato).</p>
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+div p { color: purple; }
+div > p { font-weight: bold; }
+h3 + p { color: green; }
+h3 ~ p { text-decoration: underline; }
+</pre
+      >
+    </section>
+
+    <!-- 3️⃣ ATTRIBUTI -->
+    <section>
+      <h2>3️⃣ Selettori di attributo</h2>
+      <a href="https://example.com" title="sito esterno">Link HTTPS</a><br />
+      <a href="documento.pdf" title="PDF">File PDF</a><br />
+      <input type="text" placeholder="Input di testo" />
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+[title] { border-bottom: 2px dotted #888; }
+[type="text"] { background: #fafafa; }
+[href^="https"] { color: teal; }
+[href$=".pdf"] { color: crimson; }
+</pre
+      >
+    </section>
+
+    <!-- 4️⃣ PSEUDO-CLASSI -->
+    <section>
+      <h2>4️⃣ Pseudo-classi</h2>
+      <ul>
+        <li>Primo elemento (blu)</li>
+        <li>Secondo elemento (sfondo giallo chiaro)</li>
+        <li>Ultimo elemento (rosso)</li>
+      </ul>
+      <div class="skip">Div con classe "skip" (non ha bordo)</div>
+      <div>Div senza classe "skip" (ha bordo)</div>
+      <br />
+      <input type="checkbox" id="chk" />
+      <label for="chk"
+        >Clicca qui (diventa verde e grassetto quando selezionato)</label
+      >
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+li:first-child { color: blue; }
+li:last-child { color: red; }
+li:nth-child(2) { background: #ffeaa7; }
+div:not(.skip) { border: 1px solid #ccc; }
+input:checked + label { font-weight: bold; color: green; }
+</pre
+      >
+    </section>
+
+    <!-- 5️⃣ PSEUDO-ELEMENTI -->
+    <section>
+      <h2>5️⃣ Pseudo-elementi</h2>
+      <p>
+        Testo di esempio con <code>::before</code>, <code>::after</code> e
+        <code>::first-letter</code>.
+      </p>
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+p::first-letter { font-size: 1.5em; color: #0077cc; }
+p::before { content: "→ "; color: gray; }
+p::after { content: " ✔"; color: green; }
+</pre
+      >
+    </section>
+
+    <!-- 6️⃣ AVANZATI -->
+    <section>
+      <h2>6️⃣ Selettori avanzati</h2>
+      <h1>Titolo H1 (colore blu con :is)</h1>
+      <h2>Titolo H2 (colore blu con :is)</h2>
+      <article>
+        <p>Articolo SENZA immagine.</p>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/50" alt="esempio" />
+        <p>
+          Articolo CON immagine (bordo blu grazie a <code>:has(img)</code>).
+        </p>
+      </article>
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+:is(h1, h2) { color: #0066cc; }
+article:has(img) { border: 2px solid #0066cc; padding: 5px; }
+</pre
+      >
+    </section>
+
+    <!-- 7️⃣ INTERATTIVI -->
+    <section>
+      <h2>7️⃣ Esempi interattivi</h2>
+      <div class="box-hover">Passa il mouse qui (:hover)</div>
+      <p>
+        <input
+          class="demo"
+          type="text"
+          placeholder="Cliccami per vedere :focus"
+        />
+      </p>
+      <div class="toggle-area">
+        <input type="checkbox" id="toggle-demo" />
+        <div>Contenuto normale</div>
+        <label for="toggle-demo">Attiva per cambiare colore (:checked)</label>
+      </div>
+      <div class="container-not" style="margin-top: 15px">
+        <div>Div normale (evidenziato con :not)</div>
+        <div class="skip-demo">Div escluso da :not()</div>
+      </div>
+      <button class="toggle" onclick="toggleCSS(this)">Mostra CSS</button>
+      <pre>
+.box-hover:hover { background: #0077cc; color: #fff; }
+input.demo:focus { border: 2px solid #e91e63; }
+input:checked + div { background: #4caf50; color: #fff; }
+div:not(.skip-demo) { background: #ffeb3b; }
+</pre
+      >
+    </section>
+
+    <script>
+      function toggleCSS(btn) {
+        const pre = btn.nextElementSibling;
+        const isVisible = pre.style.display === "block";
+        pre.style.display = isVisible ? "none" : "block";
+        btn.textContent = isVisible ? "Mostra CSS" : "Nascondi CSS";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    
+    }
+
+    :root {
+        --colore-primario: green;
+        --colore-secondario: pink;
+        --colore-sfondo: grey;
+        --testo-base: 18px;
+        margin: 30px;
+    }
+
+    h1 {
+        color:var(--colore-primario);
+        font-size: var(--testo-base);
+        
+    }
