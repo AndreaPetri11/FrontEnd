@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elementi Form Interattivi</title>
+  </head>
+  <body>
+    <action="mailto:mail@gmail.com">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <br />
+      <label for="email">Email</label>
+      <input type="email" />
+      <br />
+      <br />
+      <label for="nazionalita">Nazionalità</label>
+      <select name="nazionalita" required>
+        <!--Se voglio impostare un option disabled e il select required il value deve essere vuoto!-->
+        <option value="" selected disabled>Scegli là tua nazionalità</option>
+        <optgroup label="Europea">
+          <option value="italiana">Italiana</option>
+          <option value="inglese">Inglese</option>
+          <option value="francese">Francese</option>
+          <option value="spagnola">Spagnola</option>
+        </optgroup>
+        <optgroup label="Americana">
+          <option value="statunitense">Statunitense</option>
+          <option value="Argentina">Argentina</option>
+          <option value="messicana">Messicana</option>
+        </optgroup>
+        <optgroup label="Asiatica">
+          <option value="Giapponese">Giapponese</option>
+          <option value="Cinese">Cinese</option>
+        </optgroup>
+      </select>
+      <br />
+      <br />
+      <label for="message>"> Messaggio</label>
+      <textarea></textarea>
+      <br />
+      <br />
+      <label for="favfruit>"> Scegli il tuo frutto preferito</label>
+      <input
+        type="text"
+        id="frutta"
+        name="frutta"
+        list="frutti"
+        placeholder="Scegli il frutto preferito"
+      />
+      <datalist id="frutti">
+        <option value="Mela"></option>
+        <option value="Banana"></option>
+        <option value="Arancia"></option>
+        <!--datalist non funziona su Simple Browser(di VisualStudio) ma su quello normale Sì-->
+      </datalist>
+      <br />
+      <br />
+      <label>
+    <input type="radio" name="sesso" value="maschio"> Maschio
+  </label><br>
+  <label>
+    <input type="radio" name="sesso" value="femmina"> Femmina
+  </label><br>
+  <label>
+    <input type="radio" name="sesso" value="altro"> Non voglio specificarlo
+  </label>
+  <br />
+<br />
+ <label>
+    <input type="checkbox" name="newsletter" value="si"> Iscriviti alla newsletter
+  </label>
+  <br>
+  <br>
+
+      <input type="submit" value="Invia" />
+      <input type="reset" value="Resetta il Form" />
+      <input type="button" value="Cliccami" />
+      <!--NB: Alcune funzioni tipo "datalist" e "reset"non funzionano su Simple Browser(di VisualStudio) ma su quello normale Sì-->
+    </form>
+  </body>
+</html>
