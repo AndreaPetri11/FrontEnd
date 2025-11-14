@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funzioni</title>
+  </head>
+  <body>
+    <script>
+      /*Funzioni*/
+      function saluta(x) {
+        console.log("Ciao, " + x + "!");
+      }
+
+      saluta("Luigi");
+      saluta(3);
+      saluta(3 + 2);
+      saluta(); //restituirà undefined
+      saluta(typeof null); //restituirà object(bug storico di js)
+
+      let user = "Alice";
+      let cognome = "Rossi";
+      saluta(user + " " + cognome);
+
+      // Funzione che somma due numeri
+      function somma(a, b) {
+        return a + b;
+      }
+
+      let risultato = somma(5, 7);
+      console.log("Risultato somma:", risultato);
+
+      //funzione che restituisce il doppio del numero
+      function raddoppia(numero) {
+        return numero * 2;
+      }
+
+      console.log("Risultato raddoppia:", raddoppia(4)); // 8
+
+      //funzione che
+    </script>
+  </body>
+</html>
