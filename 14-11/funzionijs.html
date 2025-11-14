@@ -7,37 +7,63 @@
   </head>
   <body>
     <script>
-      /*Funzioni*/
-      function saluta(x) {
-        console.log("Ciao, " + x + "!");
-      }
+      /*Funzioni
 
-      saluta("Luigi");
-      saluta(3);
-      saluta(3 + 2);
-      saluta(); //restituirà undefined
-      saluta(typeof null); //restituirà object(bug storico di js)
+          function saluta(x) {
+                 console.log("Ciao, " + x + "!");
+               }
 
-      let user = "Alice";
-      let cognome = "Rossi";
-      saluta(user + " " + cognome);
+               saluta("Luigi");
+               saluta(3);
+               saluta(3 + 2);
+               saluta(); //restituirà undefined
+               saluta(typeof null); //restituirà object(bug storico di js)
 
-      // Funzione che somma due numeri
-      function somma(a, b) {
-        return a + b;
-      }
+               let user = "Alice";
+               let cognome = "Rossi";
+               saluta(user + " " + cognome);
+               */
+      /*Funzione che somma due numeri
 
-      let risultato = somma(5, 7);
-      console.log("Risultato somma:", risultato);
+          function somma(a, b) {
+                 return a + b;
+               }
 
-      //funzione che restituisce il doppio del numero
+               let risultato = somma(5, 7);
+               console.log("Risultato somma:", risultato);
+              */
+      /*Funzione che restituisce il doppio del numero*/
+
       function raddoppia(numero) {
         return numero * 2;
       }
 
-      console.log("Risultato raddoppia:", raddoppia(4)); // 8
+      console.log("Risultato raddoppia:", raddoppia(4));
 
-      //funzione che
+      // 8
+
+      /*Funzione che restituiscono un risultato che poi potrò utilizzare salvandolo in uno spazio di memoria
+
+             function somma(a, b) {
+               return a + b;
+             }
+
+             let risultato = somma(5, 7);
+             console.log("Risultato: ", risultato);
+             */
+      /*Somma di più numeri
+
+          function somma(a, b, c, d) {
+            return a + b + c + d;
+          }
+
+          let risultato = somma(1, 2, 3);
+          console.log("La somma è: ", risultato);
+          //risultato da Not a Number perchè non gli abbiamo dato la quantità di numeri corretta che richiede la funzione
+
+          let risultato2 = somma(1, 2, 3, 4);
+          console.log("La somma è: ", risultato2);
+          */
     </script>
   </body>
 </html>
