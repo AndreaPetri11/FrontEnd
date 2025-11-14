@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lezione 1 - JS</title>
+  </head>
+  <body>
+    <h1>Lezione 1 - JS</h1>
+    <script>
+      /* METODI PER STAMPARE IN CONSOLE*/
+      console.log("H3ll0 W0rld!");
+      console.error("Questo è un messaggio di errore");
+      console.warn("Questo è un messaggio di avviso");
+      console.info("Questo è un messaggio informativo");
+      //-------------------------------------------------------------------
+      /* Dichiarazione e assegnazioni di variabili
+
+            let x = 10;
+            x = 15; // OK
+
+            const y = 5;
+            // y = 10; // ❌ Errore: non si può riassegnare
+          */
+      //-------------------------------------------------------------------
+
+      /* ESEMPIO
+
+            let nome = "Mario";
+            let cognome = "Rossi";
+            let eta = 30;
+
+            console.log("Nome completo: " + nome + " " + cognome);
+            console.log("Tra dieci anni avrai:", eta + 10, "anni");
+          */
+      //-------------------------------------------------------------------
+
+      /* ESEMPIO
+
+            let z; //dichiarare una variabile vuota
+            console.log("Il valore di z è: " + z);
+            z = 30;
+            console.log("Il valore di z è: " + z);
+
+            const nome = "Mario";
+            console.log("Il dato contenuto in nome è: " + nome);
+          */
+      //-------------------------------------------------------------------
+
+      /* ESEMPIO
+
+            let nome = "Mario";
+            let cognome = "Rossi";
+            let eta = 25;
+            console.log(
+              "Mi chiamo " + nome + " " + cognome + " e ho " + eta + " anni."
+            );
+            console.log("Ciao " + nome + " " + cognome + ", benvenuto!");
+          */
+      //-------------------------------------------------------------------
+
+      /* Tipi di dato
+
+            let nome = "Luca";
+            let eta = 28;
+            let isStudente = true;
+            let nulla = null;
+            let nonDefinito;
+
+            console.log(typeof eta); // "number"
+            console.log(typeof isStudente); // "boolean"
+            console.log(typeof nulla); // "object" (curiosità: è un bug storico JS)
+
+            //null e undefined
+            let niente = null;
+            let indefinito;
+            console.log("niente intenzionale: " + niente);
+            console.log("indefinito: " + indefinito);
+          */
+      //-------------------------------------------------------------------
+
+      /* Operatori di assegnazione
+            let somma = 5 + 3;
+            let prodotto = 4 * 2;
+            let modulo = 10 % 3;
+
+            console.log(somma);
+            console.log(prodotto);
+            console.log(modulo);
+            */
+      //-------------------------------------------------------------------
+
+      /* Operatori di confronto/comparazione 
+      console.log(10 == 10); //true perchè hanno tipo e valore uguali
+      console.log(10 == "10"); //true vero perchè hanno valore simile
+      console.log(10 === "10"); //false perchè hanno tipo diverso anche se sono simili
+      console.log(10 != 5); //true perchè 10 è diverso da 5
+      console.log(10 != 10); //false perchè 10 è uguale 10 e non diverso !=
+      console.log(10 !== "10"); //true perchè hanno tipo diverso
+
+      */
+
+      //-------------------------------------------------------------------
+
+      /* Condizioni 
+      let voto = 28;
+
+      if (voto >= 18) {
+        console.log("Esame superato!");
+      } else {
+        console.log("Esame NON superato!");
+      } //* true perchè 28 è maggiore o uguale a 18 quindi "Esame superato!"
+
+      let risultato = 18;
+
+      if (risultato >= 18) {
+        console.log("Esame superato!");
+      } else {
+        console.log("Esame NON superato!");
+      } //* true perchè 18 è uguale a 18 quindi "Esame superato!"
+      let votazione = 17;
+
+      if (votazione >= 18) {
+        console.log("Esame superato!");
+      } else {
+        console.log("Esame NON superato!");
+      } //* false perchè 17 è inferiore e diverso da 18 quindi "Esame NON superato!"
+       */
+
+      //-------------------------------------------------------------------
+
+      /* Esempio*/
+    </script>
+  </body>
+</html>
