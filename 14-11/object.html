@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <script>
+      /*
+      const car = {
+        marca: "Toyota",
+        modello: "Corolla",
+        anno: 2020,
+        colore: "Blu",
+        targa: "AB123CD",
+      };
+      console.log(car);
+      console.table(car);
+      console.log(car.marca);
+      console.log(car.targa);
+      console.log(car.modello);
+      console.log(car.colore);
+
+      const carModello = car.modello;
+      console.log(carModello);
+*/
+
+      /* Meotodo this. serve alla funzione per accedere al valore della chiave che vive SOLO localmente all'interno dell'oggetto
+      Se non usassi this. la funzione la cercherebbe fuori dall'oggetto e se non la trovasse si bloccherebbe
+      - oggetto =                                     persona                   
+      - chiavi dell'oggetto =                         nome, cognome, eta ecc   
+      - valori dell'oggeto associati alla chiave =    anna, di gennaro, 30 ecc    
+
+      const persona = {
+        nome: "Anna",
+        cognome: "Di Gennaro",
+        eta: 30,
+        presentati: function () {
+          console.log("Ciao, sono " + this.nome + " " + this.cognome);
+          console.log("ed ho " + this.eta + " anni");
+        },
+      };
+
+      console.log(persona);
+      persona.presentati();
+      */
+      /*Esempio
+
+      nome = "Mario";
+      const macchina = {
+        nome: "Fiat",
+        proprietario: {
+          nome: "Luca",
+          cognome: "Bianchi",
+          saluta: function () {
+            console.log("Ciao sono " + this.nome);
+          },
+        },
+      };
+      */
+
+      /*
+      const libro = {
+        titolo: "Il Grande Gatsby",
+        autore: "F. Scott Fitzgerald",
+        annoPubblicazione: 1925,
+        dettagli: {
+          editore: "Scribner",
+          pagine: 218,
+          genere: "Romanzo",
+        },
+      };
+
+      console.log(
+        "Il titolo del libro è " +
+          libro.titolo +
+          ", scritto da " +
+          libro.autore +
+          " e l'editore è " +
+          libro.dettagli.editore +
+          "."
+      );
+      */
+    </script>
+  </body>
+</html>
