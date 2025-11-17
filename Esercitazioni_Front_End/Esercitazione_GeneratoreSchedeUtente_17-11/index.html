@@ -20,12 +20,19 @@
 
     <div id="lista"></div>
     <script>
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 1: Array Globale
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       //Creo un array vuoto accessibile da tutte le funzioni per salvare gli utenti.
       let utenti = [];
 
       //Perchè? Serve uno scope globale per mantenere i dati tra diverse chiamate di funzione.
 
-      //Creao una funzione per creare l'utente
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 2: Funzione creaUtente() con Default Parameter
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      //Creo una funzione per creare l'utente
       function creaUtente(nome, eta, professione = "non specificata") {
         console.log("Creazione nuovo utente...");
 
@@ -59,7 +66,16 @@
         };
       }
 
-      //funzione mostrautenti()
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 3: Arrow Function generaMessaggio()
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      const generaMessaggio = (utente) => {
+        return `${utente.nome} ha ${utente.eta} anni ed è classificato come ${utente.categoria}`;
+      };
+
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 4: Funzione mostraUtenti()
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       function mostraUtenti() {
         console.log("Aggiornamento lista utenti..."); // Logga un messaggio in console per indicare che la lista verrà aggiornata
 
@@ -74,33 +90,33 @@
             '<div class="empty-state">Nessun utente presente...</div>';
           return;
         }
-
-        // Cicla tutti gli utenti presenti nell'array 'utenti'
         for (const utente of utenti) {
-          // Genera un messaggio personalizzato usando una funzione esterna
           const messaggio = generaMessaggio(utente);
 
           // Crea un blocco HTML che rappresenta un utente
           const userHTML = `
-                        <div class="user-card">
-                            <h3>${utente.nome}</h3>
-                            <p>Età: ${utente.eta} anni</p>
-                            <p>Professione: ${utente.professione}</p>
-                            <p>Messaggio: ${messaggio}</p>
+                              <div class="user-card">
+                                  <h3>${utente.nome}</h3>
+                                  <p>Età: ${utente.eta} anni</p>
+                                  <p>Professione: ${utente.professione}</p>
+                                  <p>Messaggio: ${messaggio}</p>
 
-                            <!-- Aggiunge una categoria con classe dinamica e testo in maiuscolo -->
+                                  <!-- Aggiunge una categoria con classe dinamica e testo in maiuscolo -->
 
-                            <span class="categoria ${utente.categoria}">
-                                ${utente.categoria.toUpperCase()}
-                            </span>
-                        </div>
-                         `;
+                                  <span class="categoria ${utente.categoria}">
+                                      ${utente.categoria.toUpperCase()}
+                                  </span>
+                              </div>
+                               `;
 
           // Aggiunge l’HTML generato alla lista già presente
           lista.innerHTML += userHTML;
         }
       }
 
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 5: Funzione debugUtenti()
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       function debugUtenti() {
         // Stampa un messaggio iniziale per indicare l'avvio del debug
         console.log("🐛 DEBUG: Inizio analisi utenti...");
@@ -127,7 +143,10 @@
         console.log("✅ DEBUG completato!");
       }
 
-      //FUNZIONE AGGIUNGI UTENTI
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 6: Funzione aggiungiUtente() - VALIDAZIONE
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
       function aggiungiUtenti() {
         //Selezione per ottenere i valori degli input
         const inputNome = document.getElementById("nome");
@@ -163,13 +182,11 @@
         let messaggio = "Utente aggiunto!";
         console.log(`📢 ${messaggio}`);
 
-        // -------------------------
-        // 👤 CREAZIONE DELL’UTENTE
-        // -------------------------
+        //creazione nuovo utente
 
         // Crea un nuovo oggetto utente usando una funzione esterna
         const nuovoUtente = creaUtente(nome, eta, professione);
-        // Aggiunge l’utente all’array globale "utenti"
+        // Aggiunge(salva) l’utente all’array globale "utenti"
         utenti.push(nuovoUtente);
 
         console.log("✅ Utente aggiunto con successo:", nuovoUtente);
@@ -190,6 +207,41 @@
         // \n  Va a capo (newline), quindi il messaggio verrà spezzato su due linee.
         // ${generaMessaggio(nuovoUtente)} Esegue la funzione generaMessaggio passando nuovoUtente come argomento, e inserisce il risultato nel testo.
       }
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 7: Arrow Function filtraMaggiorenni() - EXTRA
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      // Funzione che filtra gli utenti maggiorenni (età >= 18)
+      const filtraMaggiorenni = () => {
+        // Messaggio in console per indicare che il filtro è stato attivato
+        console.log("🔍 Filtro maggiorenni attivato...");
+
+        // Crea un nuovo array contenente solo gli utenti con età >= 18
+        // .filter() scorre ogni elemento dell'array "utenti"
+        const maggiorenni = utenti.filter((utente) => utente.eta >= 18);
+
+        // Se non è stato trovato nessun maggiorenne...
+        if (maggiorenni.length === 0) {
+          console.warn("⚠️ Nessun maggiorenne trovato!"); // Avviso in console
+          alert("Non ci sono utenti maggiorenni nella lista."); // Messaggio popup
+          return; // Esce dalla funzione
+        }
+
+        // Se ci sono maggiorenni, mostra quanti sono
+        console.log(`✅ Trovati ${maggiorenni.length} maggiorenni`);
+
+        // Mostra i dati dei maggiorenni in tabella nella console
+        console.table(maggiorenni);
+
+        // Chiama una funzione esterna (presumibilmente per mostrare i risultati nella UI)
+        mostraFiltro(maggiorenni);
+      };
+
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      // PASSO 8: Event Listeners
+      // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+      //da finire
     </script>
   </body>
 </html>
