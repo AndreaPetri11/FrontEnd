@@ -5,5 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generatore Scheda Utente</title>
   </head>
-  <body></body>
+  <body>
+    <input id="nome" placeholder="nome" />
+    <br />
+    <br />
+    <input id="eta" type="number" placeholder="Età" />
+    <br />
+    <br />
+    <input id="professione" placeholder="Professione" />
+    <br />
+    <br />
+
+    <button id="btnAggiungi">Aggiungi utente</button>
+
+    <div id="lista"></div>
+    <script>
+      //Creo un array vuoto accessibile da tutte le funzioni per salvare gli utenti.
+      let utenti = [];
+
+      //Perchè? Serve uno scope globale per mantenere i dati tra diverse chiamate di funzione.
+
+      //Creao una funzione per creare l'utente
+      function creaUtente(nome, eta, professione = "non specificata") {
+        console.log("Creazione nuovo utente...");
+
+        let categoria;
+        // Usa uno switch statement per classificare l'utente
+        switch (
+          professione.toLowerCase() //toLowerCase() rende la classificazione case-insensitive
+        ) {
+          case "studente":
+            categoria = "studente";
+            break;
+          case "developer":
+          case "programmatore":
+          case "sviluppatore":
+            categoria = "developer";
+            break;
+          case "designer":
+          case "grafico":
+            categoria = "designer";
+            break;
+          default:
+            categoria = "altro";
+        }
+
+        return {
+          //Restituisce un oggetto(come valore di ritorno) con tutte le proprietà
+          nome: nome,
+          eta: eta,
+          professione: professione,
+          categoria: categoria,
+        };
+      }
+
+      //funzione mostrautenti()
+      function mostraUtenti() {
+        console.log("Aggiornamento lista utenti..."); // Logga un messaggio in console per indicare che la lista verrà aggiornata
+
+        const lista = document.getElementById("lista");
+        lista.innerHTML = ""; // Pulisce completamente il contenuto dell'elemento lista
+
+        // Se l'array 'utenti' è vuoto...
+        if (!utenti.length) {
+          //Truthy / False
+          // ...mostra un messaggio di stato "vuoto"
+          lista.innerHTML =
+            '<div class="empty-state">Nessun utente presente...</div>';
+          return;
+        }
+
+        // Cicla tutti gli utenti presenti nell'array 'utenti'
+        for (const utente of utenti) {
+          // Genera un messaggio personalizzato usando una funzione esterna
+          const messaggio = generaMessaggio(utente);
+
+          // Crea un blocco HTML che rappresenta un utente
+          const userHTML = `
+                        <div class="user-card">
+                            <h3>${utente.nome}</h3>
+                            <p>Età: ${utente.eta} anni</p>
+                            <p>Professione: ${utente.professione}</p>
+                            <p>Messaggio: ${messaggio}</p>
+
+                            <!-- Aggiunge una categoria con classe dinamica e testo in maiuscolo -->
+
+                            <span class="categoria ${utente.categoria}">
+                                ${utente.categoria.toUpperCase()}
+                            </span>
+                        </div>
+                         `;
+
+          // Aggiunge l’HTML generato alla lista già presente
+          lista.innerHTML += userHTML;
+        }
+      }
+
+      function debugUtenti() {
+        // Stampa un messaggio iniziale per indicare l'avvio del debug
+        console.log("🐛 DEBUG: Inizio analisi utenti...");
+
+        // Mostra la variabile 'utenti' in formato tabellare nella console
+        console.table(utenti);
+
+        // Ciclo che scorre tutti gli elementi dell'array 'utenti'
+        for (const index in utenti) {
+          // Stampa l’intestazione per ogni utente, indicando il numero progressivo
+          console.log(`--- Utente #${parseInt(index) + 1} ---`);
+
+          // Recupera l’oggetto utente alla posizione corrente dell’array
+          const utente = utenti[index];
+
+          // Ciclo interno che scorre tutte le proprietà dell’oggetto utente
+          for (const proprieta in utente) {
+            // Stampa ogni proprietà e il relativo valore
+            console.log(`${proprieta}: ${utente[proprieta]}`);
+          }
+        }
+
+        // Messaggio finale che indica la fine del debug
+        console.log("✅ DEBUG completato!");
+      }
+
+      //FUNZIONE AGGIUNGI UTENTI
+      function aggiungiUtenti() {
+        //Selezione per ottenere i valori degli input
+        const inputNome = document.getElementById("nome");
+        const inputEta = document.getElementById("eta");
+        const inputProfessione = document.getElementById("professione");
+
+        //Estraggo e pulisco i valori inseriti dall’utente
+        const nome = inputNome.value.trim(); // Rimuove spazi prima/dopo
+        const eta = parseInt(inputEta.value); // Converte la stringa in numero
+        const professione = inputProfessione.value.trim();
+
+        //Perché serve? Quando leggi un valore da un input HTML (input.value), il risultato è sempre una stringa, anche se l’utente ha scritto un numero.
+
+        // VALIDAZIONE
+
+        // Controllo che il nome non sia vuoto
+        if (!nome) {
+          console.error("❌ ERRORE: Nome mancante!");
+          alert("Per favore, inserisci il nome!");
+          return;
+        }
+
+        // Controllo che l’età sia valida (età presente che sia un numero > 0)
+        if (!eta || eta <= 0 || isNaN(eta)) {
+          console.warn("⚠️ ATTENZIONE: Età non valida");
+          alert("Per favore, inserisci un'età valida!");
+          return;
+        }
+
+        console.log("✅ Validazione superata!");
+
+        // SCOPE - variabile locale
+        let messaggio = "Utente aggiunto!";
+        console.log(`📢 ${messaggio}`);
+
+        // -------------------------
+        // 👤 CREAZIONE DELL’UTENTE
+        // -------------------------
+
+        // Crea un nuovo oggetto utente usando una funzione esterna
+        const nuovoUtente = creaUtente(nome, eta, professione);
+        // Aggiunge l’utente all’array globale "utenti"
+        utenti.push(nuovoUtente);
+
+        console.log("✅ Utente aggiunto con successo:", nuovoUtente);
+
+        // Aggiorna visualizzazione
+        mostraUtenti(); // aggiorna la lista visibile
+        debugUtenti(); // mostra info di debug in console
+
+        // Pulisci i campi
+        inputNome.value = "";
+        inputEta.value = "";
+        inputProfessione.value = "";
+
+        // Creo un alert con un template literal con backtick `...`
+        alert(`${messaggio}\n${generaMessaggio(nuovoUtente)}`);
+        // Il testo tra backtick permette di inserire variabili ed espressioni usando ${ ... }.
+        // ${messaggio} Inserisce il valore della variabile messaggio.
+        // \n  Va a capo (newline), quindi il messaggio verrà spezzato su due linee.
+        // ${generaMessaggio(nuovoUtente)} Esegue la funzione generaMessaggio passando nuovoUtente come argomento, e inserisce il risultato nel testo.
+      }
+    </script>
+  </body>
 </html>
