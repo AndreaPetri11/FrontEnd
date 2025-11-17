@@ -1,0 +1,213 @@
+# 🧩 ESERCIZIO COMPLETO – “Generatore di Schede Utente”
+
+Realizza una mini-app in **HTML + JavaScript** che permette di:
+
+- Inserire i dati da input
+- Validarli con if, truthy/falsy e operatori logici
+- Classificare l’utente con uno switch
+- Salvare i dati in un array di oggetti
+- Mostrare la lista utenti usando il DOM
+- Usare funzioni, arrow function, default parameters, template literals
+- Fare debugging con console.log(), console.warn(), console.error(), console.table()
+- Applicare correttamente lo scope delle variabili
+
+L’applicazione deve essere fatta in **HTML e JavaScript base**.
+
+---
+
+# 📄 CONSEGNA COMPLETA
+
+## 🧱 1. Struttura HTML (minima)
+
+Crea una pagina con:
+
+- Campo **Nome**
+- Campo **Età**
+- Campo **Professione**
+- Bottone **Aggiungi utente**
+- Un `<div>` dove mostrare l’elenco degli utenti
+
+Esempio minimo:
+
+```html
+<input id="nome" placeholder="Nome" />
+<input id="eta" type="number" placeholder="Età" />
+<input id="professione" placeholder="Professione" />
+
+<button id="btnAggiungi">Aggiungi utente</button>
+
+<div id="lista"></div>
+```
+
+### 💡 Suggerimenti DOM
+
+- Per prendere un valore da un input usa **document.getElementById(...)**
+- Per modificare la pagina usa **innerHTML**
+
+💡 Esempio generico
+
+> Se vuoi modificare il contenuto di un elemento della pagina, puoi selezionarlo e assegnare un nuovo valore alla sua proprietà innerHTML.
+> 
+
+```jsx
+const box = document.getElementById("box");
+box.innerHTML = "<p>Nuovo contenuto inserito via JavaScript!</p>";
+```
+
+- Per creare dinamicamente del testo puoi usare **template literals**
+- Ricorda che manipolare il DOM avviene *sempre dentro le funzioni*, non fuori
+
+---
+
+## 🧠 2. Validazione dei dati
+
+Nel file JS:
+
+- Se il nome è vuoto → `console.error("Nome mancante!")`
+- Se l’età non è valida → `console.warn("Età non valida")`
+- Se tutto è corretto → prosegui
+
+### 💡 Suggerimenti DOM
+
+- Dentro la funzione `aggiungiUtente()`, ottieni i valori ( `value`)leggendo dagli input
+- Ricordati di convertire l’età in numero
+- Puoi usare `trim()` per rimuovere spazi indesiderati
+
+---
+
+## 🎭 3. Classificazione dell’utente con switch
+
+Lo switch deve analizzare la professione e assegnare una categoria, ad esempio:
+
+- studente
+- developer
+- designer
+- altro (default)
+
+Usa `toLowerCase()` per uniformare l’input.
+
+---
+
+## 📦 4. Salvataggio in array
+
+Crea un array globale:
+
+```jsx
+let utenti = [];
+```
+
+Ogni utente va salvato come oggetto:
+
+```jsx
+{
+  nome,
+  eta,
+  professione,
+  categoria
+}
+```
+
+---
+
+## 🧮 5. Funzioni richieste
+
+### 🔹 1. `creaUtente(nome, eta, professione = "non specificata")`
+
+- Deve restituire un oggetto utente
+- Deve includere anche la categoria (calcolata dallo switch)
+
+---
+
+### 🔹 2. Arrow function `generaMessaggio(utente)`
+
+- Deve restituire una stringa che descrive l’utente
+- Deve usare i **template literals**
+
+Esempio di struttura:
+
+```jsx
+"${nome} ha ${eta} anni ed è classificato come ${categoria}"
+```
+
+---
+
+### 🔹 3. `mostraUtenti()`
+
+Stampa tutti gli utenti presenti nell’array nel div “lista”.
+
+### 💡 Suggerimenti DOM
+
+- seleziona il div con `document.getElementById("lista")`
+- prima di mostrare gli utenti **svuota** il contenitore
+- usa un ciclo `for...of` per iterare
+- per ogni utente genera un blocco HTML (via template literal)
+
+---
+
+### 🔹 4. `debugUtenti()`
+
+- Usa `console.table(utenti)`
+- Con un ciclo `for...in`, stampa tutte le proprietà dei singoli utenti
+
+---
+
+## 🌀 6. Richiesta sullo scope
+
+Dentro `aggiungiUtente()`:
+
+- crea una variabile `let messaggio = "Utente aggiunto!"`
+- mostrala con `console.log()` dentro la funzione
+- prova a loggarla **fuori**: deve dare errore (scope di funzione)
+
+---
+
+## 🎛️ 7. EXTRA (opzionale): bottone “Filtra maggiorenni”
+
+Aggiungi un bottone extra che quando cliccato:
+
+- filtra gli utenti con `eta >= 18`
+- usa una arrow function nella callback
+- mostra solo gli utenti filtrati in un’altra funzione dedicata
+
+### 💡 Suggerimenti DOM
+
+- collega il bottone con `addEventListener("click", ...)`
+- puoi creare una nuova funzione tipo `mostraFiltro(lista)`
+
+### 💡 Esempio generico su `.filter()`
+
+> Il metodo .filter() crea un nuovo array che contiene solo gli elementi che soddisfano una certa condizione.
+> 
+
+Esempio generico:
+
+```jsx
+const numeri = [5, 12, 3, 25, 8];
+
+const numeriGrandi = numeri.filter(num => num > 10);
+
+console.log(numeriGrandi); // [12, 25]
+```
+
+---
+
+# 🎁 COSA CONSEGNARE
+
+## 🔹 `index.html`
+
+## 🔹 `script.js`
+
+Il progetto deve includere:
+
+- Almeno **6 funzioni** (di cui 2 arrow)
+- Uso di:
+    - switch
+    - if / else
+    - truthy / falsy
+    - operatori logici
+    - for...of e for...in
+    - array + oggetti
+    - template literals
+    - default parameters
+    - console.log/error/warn/table
+    - manipolazione del DOM
