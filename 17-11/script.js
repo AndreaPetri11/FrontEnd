@@ -283,4 +283,18 @@ for (let chiave in persona) {
 }
 */
 
+/* TEMPLATE LITERALS 
+*/
+
+//con più righe:
+let nome = "Giulia";
+let saluto = `Ciao, ${nome}!`;
+console.log(saluto); // "Ciao, Giulia!"
+
+//con espressioni:
+
+let a = 4;
+let b = 5;
+console.log(`La somma è: ${a + b}`); // "La somma è: 9"
+
 
