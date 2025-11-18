@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nodelist</title>
+  </head>
+  <body>
+    <!-- <div id="box">
+      ciao sono un commento 
+      <button>clicca</button>
+    </div>-->
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <form id="myForm">
+      <input type="text" name="username" value="Mario" />
+      <input type="password" name="password" value="1234" />
+      <input type="email" name="email" value="test@example.com" />
+    </form>
+    <!--<script>
+      /*const nodi = document.getElementById("box").childNodes;
+      console.log(nodi);*/
+
+      let collection = document.getElementsByClassName("box"); // HTMLCollection
+      let nodelist = document.querySelectorAll(".box"); // NodeList //più usata perchè supporta tutti i selettori CSS
+      let newDiv = document.createElement("div");
+      newDiv.className = "box";
+      document.body.appendChild(newDiv);
+      console.log("HTML Collection lenght: ", collection.length);
+      console.log("nodelist lenght: ", nodelist.length);
+
+      const form = document.getElementById("myForm");
+      console.log(form);
+
+      const campi = form.elements;
+      console.log(campi);
+      console.log(campi.username.value); // "Mario"
+      console.log(campi.password.value); // "1234"
+      console.log(campi.email.value); // "test@example.com"
+
+      const inputs = document.querySelectorAll("#myForm input");
+      console.log(inputs);
+
+      console.log(inputs.username); // ❌ undefined
+
+      form.innerHTML += '<input name="eta" value="30">';
+      console.log(inputs.length); // ❌ rimane invariato
+    </script>
+  </body>
+</html>
