@@ -30,3 +30,21 @@ console.log("I link che portano alle sezioni interne sono: " , linkSezInt);
 3. Trovare tutti i suoi elementi figli diretti
 4. Trovare l'elemento fratello successivo (se esiste) */
 
+//1.
+const content = document.querySelector("#contenuto");
+console.log(content);
+
+//2.
+const genitore = content.parentElement;
+console.log("Il genitore di " , content , "é " , genitore);
+
+//3.
+const figli = content.children;
+console.log("I figli di " , content , "sono: " , figli);
+
+//4.
+const fratello = content.nextElementSibling;
+
+if (fratello) {
+console.log("Il fratello di " , content , "è" , fratello);
+} else { console.log("Non c'è nessun fratello di " , content); };
