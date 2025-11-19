@@ -18,9 +18,21 @@
       <button id="btnAggiungi">Aggiungi alla lista della spesa</button>
     </form>
     <h3 style="font-size: 30px">Lista della spesa:</h3>
+    <p id="messaggio"></p>
     <ul class="listaSpesa" list-style="none"></ul>
     <script src="./capitalize.js"></script>
     <script>
+      aggiornaMessaggio();
+      function aggiornaMessaggio() {
+        const lista = document.querySelectorAll(".listaSpesa li");
+        const messaggio = document.getElementById("messaggio");
+
+        if (lista.length === 0) {
+          messaggio.textContent = "Nessuna attività inserita";
+        } else {
+          messaggio.textContent = "";
+        }
+      }
       document
         .getElementById("btnAggiungi")
         .addEventListener("click", function () {
@@ -43,6 +55,7 @@
             // Al click rimuovo l'articolo
             btnRemove.addEventListener("click", function () {
               nuovoArticolo.remove();
+              aggiornaMessaggio();
             });
 
             // Creao span per il testo
@@ -59,14 +72,17 @@
               if (this.checked) {
                 testo.style.textDecoration = "line-through";
                 testo.textContent = `${articolo}`;
+                btnRemove.style.display = "none";
               } else {
                 testo.style.textDecoration = "none";
                 testo.textContent = `${articolo} - aggiunto`;
+                btnRemove.style.display = "";
               }
             });
 
             // Aggiungo il li alla lista
             document.querySelector(".listaSpesa").appendChild(nuovoArticolo);
+            aggiornaMessaggio();
 
             // Pulisco il form
             document.getElementById("spesaForm").reset();
