@@ -17,30 +17,50 @@
       />
       <button id="btnAggiungi">Aggiungi alla lista della spesa</button>
     </form>
-
-    <ul class="listaSpesa" list-style="none">
-      <li><input type="checkbox" />Pane</li>
-    </ul>
+    <h3 style="font-size: 30px">Lista della spesa:</h3>
+    <ul class="listaSpesa" list-style="none"></ul>
     <script src="./capitalize.js"></script>
     <script>
       document
         .getElementById("btnAggiungi")
-        .addEventListener("click", function () {
+        .addEventListener("click", function (e) {
+          e.preventDefault(); // blocca il submit del form
+
           let articolo = document.getElementById("articolo").value;
 
           if (articolo.length > 0) {
             articolo = capitalize(articolo);
 
             const nuovoArticolo = document.createElement("li");
-            const input = document.createElement("input");
-            input.setAttribute("type", "checkbox");
-            nuovoArticolo.appendChild(input);
-            //nuovoArticolo.textContent = articolo;
 
-            document.getElementById("spesaForm").reset(); // pulisce il campo input
-            console.log(nuovoArticolo);
-            nuovoArticolo.innerHTML = `${articolo} aggiunto`;
+            // Creazione checkbox
+            const input = document.createElement("input");
+            input.type = "checkbox";
+
+            // Creazione span per il testo
+            const testo = document.createElement("span");
+            testo.textContent = `${articolo} - aggiunto`;
+
+            // Aggiungo checkbox e testo al li
+            nuovoArticolo.appendChild(input);
+            nuovoArticolo.appendChild(testo);
+
+            // se spunto l'articolo lo sbarro e segno che è stato preso
+            input.addEventListener("change", function () {
+              if (this.checked) {
+                testo.style.textDecoration = "line-through";
+                testo.textContent = `${articolo} - preso`;
+              } else {
+                testo.style.textDecoration = "none";
+                testo.textContent = `${articolo} - aggiunto`;
+              }
+            });
+
+            // Aggiungo il li alla lista
             document.querySelector(".listaSpesa").appendChild(nuovoArticolo);
+
+            // Pulisco il form
+            document.getElementById("spesaForm").reset();
             alert("Articolo inserito correttamente");
           } else {
             alert("Inserire i campi correttamente");
