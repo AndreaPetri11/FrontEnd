@@ -57,7 +57,7 @@ box.innerHTML = "<p>Nuovo contenuto inserito via JavaScript!</p>";
 - Per creare dinamicamente del testo puoi usare **template literals**
 - Ricorda che manipolare il DOM avviene *sempre dentro le funzioni*, non fuori
 
----
+-------------------------------------------------------------OK
 
 ## 🧠 2. Validazione dei dati
 
@@ -66,16 +66,17 @@ Nel file JS:
 - Se il nome è vuoto → `console.error("Nome mancante!")`
 - Se l’età non è valida → `console.warn("Età non valida")`
 - Se tutto è corretto → prosegui
+----------------------------------------------------------QUESTO SOPRA FATTO IN MODO DIVERSO, DA RIVEDERE...
 
-### 💡 Suggerimenti DOM
+### 💡 Suggerimenti DOM 
 
 - Dentro la funzione `aggiungiUtente()`, ottieni i valori ( `value`)leggendo dagli input
 - Ricordati di convertire l’età in numero
 - Puoi usare `trim()` per rimuovere spazi indesiderati
 
----
+----------------------------------------------------------OK
 
-## 🎭 3. Classificazione dell’utente con switch
+## 🎭 3. Classificazione dell’utente con switch - OK
 
 Lo switch deve analizzare la professione e assegnare una categoria, ad esempio:
 
@@ -86,7 +87,7 @@ Lo switch deve analizzare la professione e assegnare una categoria, ad esempio:
 
 Usa `toLowerCase()` per uniformare l’input.
 
----
+-------------------------------------------------------QUESTO SOTTO NON CREDO FUNZIONI, DA RIVEDERE...
 
 ## 📦 4. Salvataggio in array
 
@@ -107,7 +108,7 @@ Ogni utente va salvato come oggetto:
 }
 ```
 
----
+----------------------------------------------------------QUESTO SOPRA NON CREDO FUNZIONI, DA RIVEDERE...
 
 ## 🧮 5. Funzioni richieste
 
@@ -129,7 +130,7 @@ Esempio di struttura:
 "${nome} ha ${eta} anni ed è classificato come ${categoria}"
 ```
 
----
+-------------------------------SONO ARRIVATO QUA-----------------------------------------
 
 ### 🔹 3. `mostraUtenti()`
 
@@ -201,13 +202,13 @@ Il progetto deve includere:
 
 - Almeno **6 funzioni** (di cui 2 arrow)
 - Uso di:
-    - switch
-    - if / else
-    - truthy / falsy
-    - operatori logici
-    - for...of e for...in
-    - array + oggetti
-    - template literals
-    - default parameters
-    - console.log/error/warn/table
-    - manipolazione del DOM
+    - switch                          ----- OK -----
+    - if / else                       ----- OK -----
+    - truthy / falsy                  ----- MANCA -----
+    - operatori logici                ----- MANCA -----  
+    - for...of e for...in             ----- MANCA -----
+    - array + oggetti                 ----- DA RIVEDERE -----
+    - template literals               ----- OK -----
+    - default parameters              ----- MANCA -----
+    - console.log/error/warn/table    ----- MANCA -----
+    - manipolazione del DOM           ----- OK -----
