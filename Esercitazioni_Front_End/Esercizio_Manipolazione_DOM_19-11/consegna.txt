@@ -1,0 +1,113 @@
+Esercizio Manipolazione DOM: Lista Attivita
+
+
+
+_STEP 0 — Setup iniziale
+Crea una pagina HTML con:
+
+- un <h1>
+- un <input type="text">
+- un <button> con scritto “Aggiungi”
+- un <ul class="lista"></ul>
+| Hint: non serve nessun file esterno all’inizio, basta uno <script> in fondo al body.
+----------------------------------------------------------------------------
+
+_STEP 1 — Selezione degli elementi
+Con JavaScript, seleziona:
+
+- l’input
+- il bottone
+- - la lista (ul)
+| Hint: prova ad usare querySelector per tutto… tranne forse uno dei tre 😉​
+----------------------------------------------------------------------------
+_STEP 2 — Aggiungere un’ attività alla lista
+Quando l’utente clicca sul bottone:
+
+1- Prendi il valore dell’input
+2- Crea un nuovo <li>
+3- Imposta il testo dell’<li>
+4- Aggiungilo alla lista usando appendChild
+5- Svuota l’input
+| Hint: document.createElement() sarà utile…
+----------------------------------------------------------------------------
+
+
+_STEP 3 — Aggiungere un pulsante “Rimuovi” per ogni attività
+Ogni <li> deve contenere:
+
+- testo attività + un piccolo <button> (es. "X").
+- il bottone deve essere creato dinamicamente insieme all’li
+- cliccandolo, rimuove solo quell’li
+| Hint: usa li.remove() dentro la funzione che gestisce il click del bottone.
+----------------------------------------------------------------------------
+
+
+_STEP 4 — Segnare un’attività come completata
+Quando si clicca sul testo dell’attività (NON sul bottone X):
+
+- aggiungi/togli una classe CSS (es. .completata)
+- la classe può solo aggiungere una linea sopra o cambiare colore
+| Hint: li.classList.toggle("completata")
+----------------------------------------------------------------------------
+
+
+_STEP 5 — Stilizzare la lista usando le classi CSS:
+Crea una classe .evidenziata che cambia colore di sfondo di un li.
+
+Aggiungi una funzione:
+- quando si doppio-clicca un’ attività, applica la classe .evidenziata
+(se già c’è, la rimuove).
+| Hint: ondblclick esiste davvero 😉​
+----------------------------------------------------------------------------
+
+
+_STEP 6 — Aggiungere un messaggio quando la lista è vuota:
+Sopra la lista metti un piccolo <p id="messaggio">.
+
+- Se la lista contiene 0 <li>, il messaggio deve dire:
+“Nessuna attività inserita”.
+- Se c’è almeno un’attività, il messaggio si deve svuotare.
+
+Aggiorna questo messaggio ogni volta che:
+- aggiungi un’attività
+- rimuovi un’attività
+| Hint: per contare gli <li> puoi usare querySelectorAll("li").
+----------------------------------------------------------------------------
+
+
+_STEP 7 — Aggiungere un pulsante per cancellare tutte le attività:
+Aggiungi un bottone “Svuota lista”.
+
+Quando si clicca:
+- elimina tutti gli <li>
+- aggiorna il messaggio "lista vuota"
+| Hint: puoi cancellare il contenuto della lista anche con innerHTML = "".
+----------------------------------------------------------------------------
+
+
+_STEP 8 — Bonus (facoltativo)
+Aggiungi un campo <select> con 2 opzioni:
+
+- "Mostra tutto"
+- "Mostra solo completati"
+
+Quando cambia il valore della select:
+- nascondi o mostra alcuni <li> tramite classi CSS (display: none)
+| Hint: fai un ciclo con for e controlla se un li ha la classe .completata.
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+____🎉 RISULTATO FINALE ATTESO_____
+Gli studenti, completando lo step-by-step, avranno una mini-app che permette di:
+
+✔ Aggiungere attività
+✔ Cliccare per completare
+✔ Doppio clic per evidenziare
+✔ Rimuovere singole attività
+✔ Svuotare l’intera lista
+✔ Nascondere/mostrare elementi filtrati
+✔ Gestire messaggi dinamici
+✔ Manipolare classi CSS
+✔ Usare querySelector / querySelectorAll con naturalezza
