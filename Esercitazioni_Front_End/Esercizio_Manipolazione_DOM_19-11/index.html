@@ -23,9 +23,7 @@
     <script>
       document
         .getElementById("btnAggiungi")
-        .addEventListener("click", function (e) {
-          e.preventDefault(); // blocca il submit del form
-
+        .addEventListener("click", function () {
           let articolo = document.getElementById("articolo").value;
 
           if (articolo.length > 0) {
@@ -33,23 +31,34 @@
 
             const nuovoArticolo = document.createElement("li");
 
-            // Creazione checkbox
+            // Creo checkbox
             const input = document.createElement("input");
             input.type = "checkbox";
 
-            // Creazione span per il testo
+            // Creo button remove
+            const btnRemove = document.createElement("button");
+            btnRemove.type = "button";
+            btnRemove.textContent = "X";
+
+            // Al click rimuovo l'articolo
+            btnRemove.addEventListener("click", function () {
+              nuovoArticolo.remove();
+            });
+
+            // Creao span per il testo
             const testo = document.createElement("span");
             testo.textContent = `${articolo} - aggiunto`;
 
             // Aggiungo checkbox e testo al li
             nuovoArticolo.appendChild(input);
             nuovoArticolo.appendChild(testo);
+            nuovoArticolo.appendChild(btnRemove);
 
             // se spunto l'articolo lo sbarro e segno che è stato preso
             input.addEventListener("change", function () {
               if (this.checked) {
                 testo.style.textDecoration = "line-through";
-                testo.textContent = `${articolo} - preso`;
+                testo.textContent = `${articolo}`;
               } else {
                 testo.style.textDecoration = "none";
                 testo.textContent = `${articolo} - aggiunto`;
