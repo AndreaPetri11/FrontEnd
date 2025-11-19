@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    margin-right: 10px;
+}
+
+input[type="text"],
+button {
+    font-size: 20px;
+    padding: 8px 14px;
+    height: 50px;
+    border-radius: 6px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.listaSpesa {
+    list-style: none;
+    padding-left: 14px;
+    font-size: 30px;
+}
+
+.listaSpesa li {
+    display: flex;
+    align-items: center;
+}
+
+.listaSpesa input {
+    transform: scale(1.5);
+    margin-right: 12px;
+    cursor: pointer;
+}

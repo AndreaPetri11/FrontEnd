@@ -4,8 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Esercizio su Manipolazione DOM</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <script></script>
+    <h1>Esercizio su Manipolazione DOM</h1>
+    <form id="spesaForm">
+      <input
+        id="articolo"
+        type="text"
+        placeholder="Articolo da inserire"
+        required
+      />
+      <button id="btnAggiungi">Aggiungi alla lista della spesa</button>
+    </form>
+
+    <ul class="listaSpesa" list-style="none">
+      <li><input type="checkbox" />Pane</li>
+    </ul>
+    <script src="./capitalize.js"></script>
+    <script>
+      document
+        .getElementById("btnAggiungi")
+        .addEventListener("click", function () {
+          let articolo = document.getElementById("articolo").value;
+
+          if (articolo.length > 0) {
+            articolo = capitalize(articolo);
+
+            const nuovoArticolo = document.createElement("li");
+            const input = document.createElement("input");
+            input.setAttribute("type", "checkbox");
+            nuovoArticolo.appendChild(input);
+            //nuovoArticolo.textContent = articolo;
+
+            document.getElementById("spesaForm").reset(); // pulisce il campo input
+            console.log(nuovoArticolo);
+            nuovoArticolo.innerHTML = `${articolo} aggiunto`;
+            document.querySelector(".listaSpesa").appendChild(nuovoArticolo);
+            alert("Articolo inserito correttamente");
+          } else {
+            alert("Inserire i campi correttamente");
+          }
+        });
+    </script>
   </body>
 </html>
