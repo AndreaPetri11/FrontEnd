@@ -12,17 +12,27 @@
       <input
         id="articolo"
         type="text"
-        placeholder="Articolo da inserire"
+        placeholder="Inserisci articolo"
         required
       />
       <button id="btnAggiungi">Aggiungi alla lista della spesa</button>
+      <button id="btnClear">Svuota lista</button>
     </form>
     <h3 style="font-size: 30px">Lista della spesa:</h3>
     <p id="messaggio"></p>
     <ul class="listaSpesa" list-style="none"></ul>
+    <br />
+    <br />
+    <select id="mostra" name="mostra">
+      <option value="tutto">Mostra tutto</option>
+      <option value="completati">Mostra solo completati</option>
+    </select>
+
     <script src="./capitalize.js"></script>
+
     <script>
       aggiornaMessaggio();
+
       function aggiornaMessaggio() {
         const lista = document.querySelectorAll(".listaSpesa li");
         const messaggio = document.getElementById("messaggio");
@@ -33,6 +43,7 @@
           messaggio.textContent = "";
         }
       }
+
       document
         .getElementById("btnAggiungi")
         .addEventListener("click", function () {
@@ -40,7 +51,7 @@
 
           if (articolo.length > 0) {
             articolo = capitalize(articolo);
-
+            // Creo nuovo li
             const nuovoArticolo = document.createElement("li");
 
             // Creo checkbox
@@ -58,7 +69,7 @@
               aggiornaMessaggio();
             });
 
-            // Creao span per il testo
+            // Creao span per il testo per poi sbarrare solo quello e non la checkbox
             const testo = document.createElement("span");
             testo.textContent = `${articolo} - aggiunto`;
 
@@ -67,7 +78,7 @@
             nuovoArticolo.appendChild(testo);
             nuovoArticolo.appendChild(btnRemove);
 
-            // se spunto l'articolo lo sbarro e segno che è stato preso
+            // se spunto l'articolo lo sbarro e tolgo la parola aggiunto altrimenti
             input.addEventListener("change", function () {
               if (this.checked) {
                 testo.style.textDecoration = "line-through";
@@ -80,17 +91,28 @@
               }
             });
 
-            // Aggiungo il li alla lista
+            // Aggiungo il nuovo articolo alla lista
             document.querySelector(".listaSpesa").appendChild(nuovoArticolo);
             aggiornaMessaggio();
 
-            // Pulisco il form
+            // Pulisco il form resettandolo dopo ogni inserimento
             document.getElementById("spesaForm").reset();
             alert("Articolo inserito correttamente");
           } else {
             alert("Inserire i campi correttamente");
           }
         });
+
+      const btnClear = document.getElementById("btnClear");
+
+      btnClear.addEventListener("click", function () {
+        const svuotaLista = document
+          .querySelectorAll(".listaSpesa li")
+          .forEach((li) => li.remove());
+        aggiornaMessaggio();
+      });
+
+      //vedi step 8 da gabriele
     </script>
   </body>
 </html>
