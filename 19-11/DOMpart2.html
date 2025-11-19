@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipolazione del DOM - Versione Didattica</title>
+    <style>
+      .attivo {
+        background-color: green;
+        font-size: 30px;
+        color: white;
+      }
+      .nascosto {
+        display: none;
+      }
+      .eliminami {
+        border: 5px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="intro eliminami">Questo è il div preso per fare l'esempio.</div>
+    <script>
+      //VEDI SU NOTION LEZIONE 4
+
+      const elemento = document.querySelector(".intro");
+
+      /*//PROPRIETA' CSS CON JAVASCRIPT
+      
+      // Impostare singole proprietà CSS
+            elemento.style.color = "red";
+            elemento.style.backgroundColor = "yellow";
+            elemento.style.fontSize = "18px";
+            elemento.style.padding = "10px";
+            elemento.style.border = "8px solid blue";
+
+            / Proprietà con trattino diventano camelCase
+            elemento.style.borderRadius = "5px"; // border-radius
+            elemento.style.textAlign = "center"; // text-align
+            elemento.style.marginTop = "20px"; // margin-top*/
+
+      /*// Metodo 1: Object.assign
+      Object.assign(elemento.style, {
+        color: "white",
+        backgroundColor: "pink",
+        padding: "15px",
+        borderRadius: "8px",
+        fontSize: "16px",
+      });*/
+
+      /*// Metodo 2: .cssText (sostituisce tutto)
+      // //metodo + adeguato, pratico e pulito
+      elemento.style.cssText =
+        "color: white; background-color: red; padding: 15px;";*/
+
+      /*// Metodo 3: .setProperty
+      elemento.style.setProperty("color", "white");
+      elemento.style.setProperty("background-color", "darkblue");
+      elemento.style.setProperty("--custom-property", "10px"); */
+
+      //element.style.cssText = "..."	              ❌ Sovrascrive tutti gli stili inline esistenti
+      //element.style.property = ...	              ✅ Cambia solo una singola proprietà
+      //Object.assign(element.style, {...})	        ✅ Cambia solo le proprietà indicate, senza cancellare le altre
+
+      //GESTIONE CLASSI CSS CON classList
+
+      // Aggiungere classi
+      elemento.classList.add("attivo");
+
+      // Rimuovere classi
+      elemento.classList.remove("eliminami");
+
+      // Toggle (aggiunge/rimuove) //quando c'è la toglie e quando non c'è la mette
+      //elemento.classList.toggle("nascosto");
+      //elemento.classList.toggle("visibile", true); // condizionale (da rivedere)
+
+      /*// Verifica e sostituzione
+      if (elemento.classList.contains("attivo")) {
+        console.log("Elemento è attivo");
+      }
+      elemento.classList.replace("vecchia-classe", "nuova-classe");*/
+    </script>
+  </body>
+</html>

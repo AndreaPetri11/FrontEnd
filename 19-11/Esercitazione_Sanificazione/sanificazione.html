@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanificazone</title>
+  </head>
+  <input id="userInput" type="text" placeholder="inserisci il tuo nome" />
+  <button id="submitBtn" onclick="mostraTesto()">Invia</button>
+  <br />
+  <br />
+  <div id="output"></div>
+  <body>
+    <script>
+      function mostraTesto() {
+        const input = document.getElementById("userInput").value;
+        const outputDiv = document.getElementById("output");
+        //utilizzo di textContent per prevenire XSS
+        outputDiv.innerHTML = sanificaHTML(input); //qualcuno potrebbe inserire nell'input funzioni per infettare il codice con es: <img src=x onerror="alert('XSS')">
+        //outputDiv.textContent = input;
+        //con textContent è sicuro perchè l'input viene immesso come testo e non come codice
+      }
+      // Funzione per Sanificare HTML se necessario
+      function sanificaHTML(str) {
+        const div = document.createElement("div");
+        div.textContent = str;
+        return div.innerHTML;
+      }
+    </script>
+  </body>
+</html>

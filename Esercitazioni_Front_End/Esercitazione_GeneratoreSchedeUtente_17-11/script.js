@@ -24,14 +24,16 @@
             //se i dati soddisfano i requisiti che ho imposto
             // Creo un div vuoto con stile al quale assegno uno spazio di memoria dove inserirò i dati degli utenti
             const userCard = document.createElement("div");
-            userCard.style.border = "1px solid #aaa";
+            /*userCard.style.border = "1px solid grey";
             userCard.style.padding = "10px";
             userCard.style.margin = "10px 0";
             userCard.style.width = "200px";
-            userCard.style.borderRadius = "5px";
+            userCard.style.borderRadius = "10px";*/
+            //uso il .cssText per fare il tutto inline e non ripetermi
+            userCard.style.cssText= "border: 1px solid grey; padding: 10px; margin: 10px; width: 200px; border-radius: 10px;"
 
             //modifico il DOM (con .innerHTML) inserendoci stringhe html
-            //seguite dai i dati immessi dall'utente grazie al metodo template strings
+            //seguite dai i dati immessi dall'utente grazie al metodo template literals
             userCard.innerHTML = `
             <strong> Nome: </strong> ${name}
             <br>
@@ -46,6 +48,7 @@
             `;
             //inserisco il tutto nel div lista
             document.getElementById("lista").appendChild(userCard);
+            //mando un alert per avvisare che l'utente è stato inserito
             alert("Utente inserito con successo!");
 
             // e pulisco i campi

@@ -1,0 +1,6 @@
+**Esercizio 3.1: Manipolazione sicura del contenuto**
+
+1. Creare un form con input di testo
+2. Visualizzare l'input sia come testo che come HTML
+3. Testare con input contenente tag HTML
+4. Implementare sanificazione
