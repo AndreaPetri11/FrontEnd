@@ -20,19 +20,16 @@
     </form>
     <h3 style="font-size: 30px">Lista della spesa:</h3>
     <p id="messaggio"></p>
-    <ul class="listaSpesa" list-style="none"></ul>
+    <ul class="listaSpesa"></ul>
     <br />
     <br />
     <select id="mostra" name="mostra">
       <option value="tutto">Mostra tutto</option>
       <option value="completati">Mostra solo completati</option>
     </select>
-
     <script src="./capitalize.js"></script>
 
     <script>
-      aggiornaMessaggio();
-
       function aggiornaMessaggio() {
         const lista = document.querySelectorAll(".listaSpesa li");
         const messaggio = document.getElementById("messaggio");
@@ -43,6 +40,8 @@
           messaggio.textContent = "";
         }
       }
+
+      aggiornaMessaggio();
 
       document
         .getElementById("btnAggiungi")
@@ -112,7 +111,21 @@
         aggiornaMessaggio();
       });
 
-      //vedi step 8 da gabriele
+      const select = document.getElementById("mostra");
+      const lista = document.querySelector(".listaSpesa");
+
+      select.addEventListener("change", function () {
+        const items = lista.querySelectorAll("li");
+
+        items.forEach((li) => {
+          const checkbox = li.querySelector("input[type='checkbox']");
+          if (this.value === "tutto") {
+            li.style.display = "flex";
+          } else if (this.value === "completati") {
+            li.style.display = checkbox.checked ? "flex" : "none";
+          }
+        });
+      });
     </script>
   </body>
 </html>
