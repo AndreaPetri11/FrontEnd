@@ -20,6 +20,7 @@
   </head>
   <body>
     <div class="intro eliminami">Questo è il div preso per fare l'esempio.</div>
+    <div id="contenitore"></div>
     <script>
       //VEDI SU NOTION LEZIONE 4
 
@@ -79,6 +80,33 @@
         console.log("Elemento è attivo");
       }
       elemento.classList.replace("vecchia-classe", "nuova-classe");*/
+
+      //CREARE, INSERIRE E RIMUOVERE ELEMENTI
+      //Questo crea un elemento <p>, ma non è ancora visibile nel DOM.
+      const nuovoParagrafo = document.createElement("p");
+      const pallino2 = document.createElement("p");
+      const paragrafo3 = document.createElement("p");
+      //Aggiungiamo contenuto:
+      nuovoParagrafo.textContent = "Ciao, sono nuovoParagrafo!";
+      pallino2.textContent = "Ciao, sono pallino2!";
+      //Oppure, se vogliamo HTML:
+      //nuovoParagrafo.innerHTML = "<strong>Contenuto in grassetto</strong>";
+      //pallino2.innerHTML = "<strong>Pallino2 in grassetto</strong>";
+
+      const container = document.getElementById("contenitore");
+
+      // appendChild() Aggiunge un nodo come ultimo figlio:
+      container.appendChild(nuovoParagrafo);
+      container.appendChild(pallino2);
+
+      //.prepend() Aggiunge all’inizio del contenitore:
+      //container.prepend("Contenuto all'inizio.", nuovoParagrafo);
+      //.append() Aggiunge alla fine del contenitore:
+      //container.append("Contenuto alla fine", paragrafo3);
+
+      ///.insertBefore() se vuoi inserirlo prima di un nodo specifico:
+      //const primoFiglio = container.firstChild;
+      //container.insertBefore(pallino2, primoFiglio);
     </script>
   </body>
 </html>
