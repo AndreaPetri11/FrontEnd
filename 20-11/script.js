@@ -10,9 +10,10 @@ function log(title, content) {
 
 btn.addEventListener('click', () => {
   out.textContent = '';
+
   // Qui inizieremo a incastrare gli esempi
 
-/* 1. Operatore Ternario
+/* 1. Operatore Ternario ===
 
   const numero = Math.floor(Math.random() * 10); // VEDI APPUNTI IN FONDO
   const esito = (numero % 2 === 0)
@@ -50,7 +51,7 @@ function getRndInteger(min, max) {
 }
 */
 
-/* 2. REST OPERATOR (i tre puntini ...)
+/* 2. REST OPERATOR (i tre puntini ...) ===
 
   log("REST OPERATOR SPIEGAZIONE", "I tre puntini (...) raccolgono tutti i parametri in un array");
 
@@ -138,8 +139,6 @@ function getRndInteger(min, max) {
 
 /* 4. DESTRUCTURING - ESTRARRE VALORI DA ARRAY E OGGETTI ===
 
-*/
-
   log("DESTRUCTURING", "Estrarre valori da array e oggetti in modo semplice");
 
   log("DESTRUCTURING DI ARRAY");
@@ -156,13 +155,14 @@ function getRndInteger(min, max) {
   const [primoColore, secondoColore, terzoColore] = colori;
   log("Con destructuring", `primo: ${primoColore}, secondo: ${secondoColore}, terzo: ${terzoColore}`);
 
-  // DESTRUCTURING con REST
+  // DESTRUCTURING con REST 
+  //(l'array colori resta invariata, creo solo spazi di memoria tra cui un'array usando lo SPREAD)
   const [principale, secondario, ...altriColori] = colori;
   log("Destructuring + REST", {
     "Colore principale come stringa": principale,
     "Colore secondario come stringa": secondario,
     "Altri colori come un'Array": altriColori,
-  });
+});
 //-----------------------------------------------------------------------
   log("DESTRUCTURING DI OGGETTI");
   const persona = {
@@ -188,11 +188,13 @@ function getRndInteger(min, max) {
   const { nome: nomeCompleto, lavoro: professione } = persona;
   log("Destructuring con rinomina", `${nomeCompleto} fa il ${professione}`);
 
-  // DESTRUCTURING con REST per oggetti
+  // DESTRUCTURING con REST per oggetti 
+  // (l'oggetto persona resta invariato, creo solo spazi di memoria tra cui un oggetto usando lo SPREAD)
   const { cognome, ...infoPersonali } = persona;
   log("Destructuring oggetti + REST", {
-    "Cognome estratto": cognome,
-    "Resto delle info": infoPersonali,
+    "Cognome estratto come una stringa": cognome,
+    "Cognome estratto come una stringa": nome,
+    "Resto delle info come un oggetto": infoPersonali,
   });
 
   // ESEMPIO PRATICO: Funzione che riceve oggetto e usa destructuring
@@ -203,6 +205,74 @@ function getRndInteger(min, max) {
   const presentazione = presentaPersona(persona);
   log("Funzione con destructuring", presentazione);
 
-  // prossimi esempi...
-  
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+// **Approfondimento:**
+
+// **Cos'è il Destructuring?**
+
+//Il **destructuring** è una sintassi che permette di **estrarre** valori da array e oggetti e assegnarli a variabili in modo rapido e elegante.
+//-----------------------------------------------------------------------
+//**1. DESTRUCTURING DI ARRAY**
+
+//**Sintassi Base**
+
+// const [variabile1, variabile2, variabile3] = array;
+
+//**Vantaggi Array Destructuring:**
+
+//- **Meno codice**: Una riga invece di tre
+//- **Più leggibile**: Assegnazioni multiple in una volta
+//- **Posizionale**: L'ordine delle variabili corrisponde all'ordine nell'array
+
+// **2. DESTRUCTURING CON REST OPERATOR**
+
+// `const [primo, secondo, ...resto] = ["a", "b", "c", "d", "e"];`
+
+// primo = "a"
+
+// secondo = "b"
+
+// resto = ["c", "d", "e"]
+//-----------------------------------------------------------------------
+// **3. DESTRUCTURING DI OGGETTI**
+
+// **Sintassi Base**
+
+// `const { proprietà1, proprietà2 } = oggetto;`
+
+// **Caratteristiche Oggetti:**
+
+//- **Per nome**: Le variabili devono corrispondere ai nomi delle proprietà
+//- **Ordine libero**: Non importa l'ordine delle proprietà
+//- **Flessibile**: Puoi estrarre solo le proprietà che ti servono
+
+//-----------------------------------------------------------------------
+
+// **QUANDO USARE IL DESTRUCTURING?**
+
+//✅ **Usa quando:**
+
+//- Devi estrarre più valori da array/oggetti
+//- Vuoi parametri di funzione più puliti
+//- Lavori con API che restituiscono oggetti complessi
+
+//❌ **Non usare quando:**
+
+//- Serve solo una proprietà (più semplice `obj.prop`)
+
+//Il destructuring rende il codice più pulito, leggibile e moderno! 🚀
+
+*/
+
+/* 5. MAP  ===(ANCORA DA VEDERE) 
+//Cos'è il metodo map()?
+//Il metodo map() è uno dei metodi più potenti degli array in JavaScript. 
+// Trasforma ogni elemento di un array applicando una funzione e crea un nuovo array con i risultati.
+
+//Sintassi Base
+const nuovoArray = arrayOriginale.map((item) => trasformazione);
+*/  
 });
