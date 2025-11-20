@@ -110,7 +110,7 @@ function getRndInteger(min, max) {
 
 */
 
-/* 3. SPREAD OPERATOR - IL CONTRARIO DEL REST ===
+/* 3. SPREAD OPERATOR - IL CONTRARIO DEL REST === 
 
   log("SPREAD OPERATOR", "I tre puntini (...) ESPANDONO un array in argomenti separati");
 
