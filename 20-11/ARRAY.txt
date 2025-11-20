@@ -1,0 +1,77 @@
+Cos’è un Array?
+Un array è una struttura dati che contiene una lista ordinata di elementi, accessibili tramite un indice numerico che parte da zero.
+
+let colori = ["rosso", "verde", "blu"];
+console.log(colori[0]); // "rosso"
+console.log(colori[1]); // "verde"
+console.log(colori[2]); // "blu"
+​---------------------------------------------
+2. Proprietà .length
+Restituisce il numero di elementi presenti nell’array.
+
+console.log(colori.length); // 3
+
+​​---------------------------------------------
+
+3. Accesso e modifica degli elementi
+Puoi leggere o assegnare un valore tramite indice.
+
+colori[1] = "giallo";
+console.log(colori); // ["rosso", "giallo", "blu"]
+​
+Se assegni a un indice superiore alla lunghezza, l’array si espande con elementi undefined intermedi.
+
+colori[5] = "arancione";
+console.log(colori);
+// ["rosso", "giallo", "blu", undefined, undefined, "arancione"]
+console.log(colori.length); // 6
+
+​---------------------------------------------
+4. Aggiungere e rimuovere elementi
+
+.push(elem) — aggiunge alla fine
+colori.push("viola");
+console.log(colori);
+​
+.pop() — rimuove e restituisce l’ultimo elemento
+let ultimo = colori.pop();
+console.log(ultimo);
+console.log(colori);
+​
+.unshift(elem) — aggiunge all’inizio
+colori.unshift("nero");
+console.log(colori);
+​
+.shift() — rimuove e restituisce il primo elemento
+let primo = colori.shift();
+console.log(primo);
+console.log(colori);
+​
+5. Iterare un array
+Con for classico
+for (let i = 0; i < colori.length; i++) {
+  console.log(`Elemento ${i}: ${colori[i]}`);
+}
+​
+Con for...of (più leggibile)
+for (let colore of colori) {
+  console.log(colore);
+}
+
+​---------------------------------------------
+
+6. Metodi utili sugli array
+
+.indexOf(elem) — indice della prima occorrenza o -1
+console.log(colori.indexOf("blu")); // 2
+console.log(colori.indexOf("rosa")); // -1
+
+.includes(elem) — true se presente, altrimenti false
+console.log(colori.includes("giallo")); // true
+
+.splice(indice, numRimuovi, elem1, elem2, ...) — rimuove e/o inserisce elementi
+colori.splice(1, 1); // rimuove 1 elemento all’indice 1
+console.log(colori);
+
+colori.splice(1, 0, "verde", "rosa"); // inserisce senza rimuovere
+console.log(colori);

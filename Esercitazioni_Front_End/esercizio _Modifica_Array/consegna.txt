@@ -1,0 +1,98 @@
+## 9. Esercizi
+
+### Esercizio 1 — Stampa tutti i colori con `for`
+
+```jsx
+let colori = ["rosso", "verde", "blu"];
+for (let i = 0; i < colori.length; i++) {
+  console.log(colori[i]);
+}
+```
+
+### Esercizio 2 — Aggiungi due colori e rimuovi l’ultimo
+
+```jsx
+
+let colori = ["rosso", "verde", "blu"];
+colori.push("giallo", "arancione");
+colori.pop();
+console.log(colori);
+```
+
+### Esercizio 3 — Verifica se "verde" è presente e stampa indice
+
+```jsx
+let colori = ["rosso", "verde", "blu"];
+if (colori.includes("verde")) {
+  console.log("Indice di verde: " + colori.indexOf("verde"));
+} else {
+  console.log("Verde non trovato");
+}
+```
+
+### Esercizio 4 — Cambia il colore in seconda posizione
+
+```jsx
+let colori = ["rosso", "verde", "blu"];
+colori[1] = "viola";
+console.log(colori);
+```
+
+### Esercizio 5 — Rimuovi il primo elemento e stampa l’array aggiornato
+
+```jsx
+let colori = ["rosso", "verde", "blu"];
+colori.shift();
+console.log(colori);
+```
+
+---
+
+## 10. Mini progetto: lista della spesa dinamica
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista della Spesa</title>
+</head>
+<body>
+  <h1>Lista della Spesa</h1>
+  <input type="text" id="inputItem" placeholder="Inserisci un prodotto" />
+  <button onclick="aggiungiElemento()">Aggiungi</button>
+  <ul id="lista"></ul>
+
+  <script>
+    let listaSpesa = [];
+
+    function aggiungiElemento() {
+      let input = document.getElementById("inputItem");
+      let valore = input.value.trim();
+
+      if (valore !== "") {
+        listaSpesa.push(valore);
+        input.value = "";
+        aggiornaLista();
+      } else {
+        alert("Inserisci un prodotto!");
+      }
+    }
+
+    function aggiornaLista() {
+      let ul = document.getElementById("lista");
+      ul.innerHTML = "";
+
+      for (let item of listaSpesa) {
+        let li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>
+```
+
+- Prova ad aggiungere un button accanto a ogni elemento per poterlo rimuovere
+- Stilizza

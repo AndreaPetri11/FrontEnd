@@ -129,3 +129,31 @@
     </script>
   </body>
 </html>
+
+<!-- // aggiornamento in tempo reale in base alla spunta senza cambiare la selezione
+
+const select = document.getElementById("mostra");
+const lista = document.querySelector(".listaSpesa");
+
+// Funzione che aggiorna la visualizzazione della lista
+function aggiornaLista() {
+  const items = lista.querySelectorAll("li");
+  items.forEach((li) => {
+    const checkbox = li.querySelector("input[type='checkbox']");
+    if (select.value === "tutto") {
+      li.style.display = "flex";
+    } else if (select.value === "completati") {
+      li.style.display = checkbox.checked ? "flex" : "none";
+    }
+  });
+}
+
+// Aggiorna la lista quando cambio il filtro
+select.addEventListener("change", aggiornaLista);
+
+// Aggiorna la lista anche quando si spunta o deseleziona una checkbox
+lista.addEventListener("change", function (e) {
+  if (e.target && e.target.type === "checkbox") {
+    aggiornaLista();
+  }
+}); -->

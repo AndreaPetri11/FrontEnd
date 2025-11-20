@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista della Spesa</title>
+  </head>
+  <body>
+    <h1>Lista della Spesa</h1>
+    <input type="text" id="inputItem" placeholder="Inserisci un prodotto" />
+    <button onclick="aggiungiElemento()">Aggiungi</button>
+    <ul id="lista"></ul>
+
+    <script>
+      let listaSpesa = [];
+
+      //funzione logica per inserire elemento
+      function aggiungiElemento() {
+        let input = document.getElementById("inputItem");
+        let valore = input.value.trim();
+
+        if (valore !== "") {
+          listaSpesa.push(valore);
+          input.value = "";
+          aggiornaLista();
+        } else {
+          alert("Inserisci un prodotto!");
+        }
+      }
+
+      //funzione visiva per modificare DOM
+      function aggiornaLista() {
+        let ul = document.getElementById("lista");
+        ul.innerHTML = ""; //svuota lista
+
+        for (let item of listaSpesa) {
+          let li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        }
+      }
+    </script>
+  </body>
+</html>
