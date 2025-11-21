@@ -438,6 +438,256 @@ function getRndInteger(min, max) {
 
 */
 
+/* 7. Metodi più usati:  
+vedi sotto */
+
+/* 7.1 Date e ora
+
+//- `Date.now()` → numero di millisecondi dal 1/1/1970.
+//- `new Date()` → oggetto data completo.
+
+const ms = Date.now();
+const adesso = new Date();
+log('Date.now()', ms);
+console.log(adesso);
+log('new Date()', adesso.toLocaleString());
+console.log(adesso.toLocaleString());
+log('new Date()', adesso.toLocaleTimeString());
+console.log(adesso.toLocaleTimeString());
+log('new Date()', adesso.toLocaleDateString());
+console.log(adesso.toLocaleDateString());
+log('new Date()', adesso.getFullYear());
+console.log(adesso.getFullYear());
+log('new Date()', adesso.getMonth()+1); //+1 perchè l'indice del mese parte da Gennaio=0
+console.log(adesso.getMonth()+1);       //+1 perchè l'indice del mese parte da Gennaio=0
+log('new Date()', adesso.getDay());
+console.log(adesso.getDay());
+
+*/
+
+/* 7.2 Metodi Math
+
+//- `Math.random()`       -> generae numero casuale
+//  `Math.floor()`        -> 
+//  `Math.ceil()`         -> 
+//  `Math.round()`        -> arrotonda il numero
+//  `Math.max(a, b, ...)` -> 
+//  `Math.min(...)`       -> 
+
+const casuale = Math.random();
+const arrotondato = Math.round(casuale * 10);
+log('Math.random()', casuale);
+log('Arrotondato', arrotondato);
+
+*/
+
+/* 7.3 Metodi stringa
+
+// `toUpperCase()`, `toLowerCase()`  - trasformazione
+// `includes(substr)`, `startsWith()`, `endsWith()`  - booleani
+// `slice(start, end)`, `trim()` - taglio
+
+const testo = '           proograMmazione         ';
+log('toUpperCase', testo.toUpperCase());
+log('trim', testo.trim());
+log('includes "oo"', testo.includes('oo')); //restituisce true o false
+
+*/  
+
+/*funzione per normalizzare i campi inseriti dall'utente es: "   MaRiO rOsSi   "--> "Mario Rossi"
+      function capitalize(str) {
+        return str
+          .trim()
+          .toLowerCase()
+          .split(/\s+/) // separa qualunque numero di spazi
+          .map((word) => word.replace(/^./, (c) => c.toUpperCase()))
+          .join(" ");
+      }
+*/
+
+/* funzione per mettere la prima lettera maiuscola
+function capitalizeFirstLetter(str) {
+  return str.substring(0, 1).toUpperCase() + str.substring(1);
+} */
+
+/* 8. METODO REDUCE ===
+
+//Nel codice sopra abbiamo usato il metodo `reduce()` per calcolare il totale del carrello.
+//Questo è uno dei metodi più potenti di JavaScript, ma può sembrare complicato all'inizio.
+//Il metodo `reduce()` **riduce** un array a un singolo valore, processando ogni elemento e accumulando il risultato.
+
+//Sintassi base:
+
+array.reduce((accumulatore, elementoCorrente) => {
+    // logica per combinare accumulatore con elemento corrente
+    return nuovoAccumulatore;
+}, valoreIniziale);  // ← Questo valore iniziale è fondamentale!
+
+
+
+//Il Valore Iniziale: Perché quello 0 è Cruciale
+const total = items.reduce((sum, item) =>
+    sum + (item.price * item.quantity), 0 );
+//                                      ↑
+//                              Questo 0 è il valore iniziale!
+
+//Il valore iniziale (0) dice a reduce() da dove iniziare il calcolo.
+//Senza di esso, JavaScript userebbe il primo elemento dell'array come punto di partenza, causando errori!
+
+*/
+/* ❌ SENZA valore iniziale (SBAGLIATO!)
+const totalSbagliato = items.reduce((sum, item) =>
+    sum + (item.price * item.quantity)
+);
+*/
+// Se items[0] = {id: 1, name: "Pizza", price: 12.50, quantity: 2}
+// sum diventerebbe l'oggetto Pizza, non un numero!
+// Risultato: NaN ❌
+
+/* ✅ CON valore iniziale (CORRETTO!)
+const totalCorretto = items.reduce((sum, item) =>
+    sum + (item.price * item.quantity), 0
+); 
+// sum inizia da 0 (numero), quindi tutto funziona
+// Risultato: numero corretto ✅
+
+/* Come Funziona nel Nostro Esempio Step-by-Step
+
+// I nostri items del carrello
+const items = [
+    { id: 1, name: "Pizza", price: 12.50, quantity: 2 },
+    { id: 2, name: "Bibita", price: 3.00, quantity: 1 },
+    { id: 3, name: "Dolce", price: 5.50, quantity: 1 }
+];
+
+// Calcolo del totale con reduce
+const total = items.reduce((sum, item) =>
+    sum + (item.price * item.quantity), 0
+);
+
+console.log();
+
+🔄 Cosa succede passo dopo passo:
+
+INIZIO:
+- sum = 0 (il valore iniziale che abbiamo fornito)
+
+Iterazione 1:
+- sum = 0 (valore iniziale)
+- item = { id: 1, name: "Pizza", price: 12.50, quantity: 2 }
+- calcolo: 0 + (12.50 * 2) = 0 + 25.00 = 25.00
+- nuovo sum = 25.00
+
+Iterazione 2:
+- sum = 25.00 (risultato dell'iterazione precedente)
+- item = { id: 2, name: "Bibita", price: 3.00, quantity: 1 }
+- calcolo: 25.00 + (3.00 * 1) = 25.00 + 3.00 = 28.00
+- nuovo sum = 28.00
+
+Iterazione 3:
+- sum = 28.00 (risultato dell'iterazione precedente)
+- item = { id: 3, name: "Dolce", price: 5.50, quantity: 1 }
+- calcolo: 28.00 + (5.50 * 1) = 28.00 + 5.50 = 33.50
+- nuovo sum = 33.50
+
+Risultato finale: total = 33.50 ✅
+
+*/
+
+/* Esempi con Diversi Valori Iniziali 
+
+
+//Il valore iniziale cambia a seconda di quello che vogliamo ottenere:
+
+const numeri = [1, 2, 3, 4, 5];
+
+// 1. Per SOMMARE: valore iniziale = 0
+const somma = numeri.reduce((acc, num) => acc + num, 0);
+// 0 + 1 + 2 + 3 + 4 + 5 = 15
+
+// 2. Per MOLTIPLICARE: valore iniziale = 1 (non 0!)
+const prodotto = numeri.reduce((acc, num) => acc * num, 1);
+// 1 * 1 * 2 * 3 * 4 * 5 = 120
+
+// 3. Per CONCATENARE STRINGHE: valore iniziale = ""
+const parole = ['Ciao', 'mondo', 'React'];
+const frase = parole.reduce((acc, parola) => acc + ' ' + parola, '');
+// '' + ' Ciao' + ' mondo' + ' React' = ' Ciao mondo React'
+
+// 4. Per CREARE OGGETTI: valore iniziale = {}
+const studenti = [
+    { id: 1, nome: 'Mario' },
+    { id: 2, nome: 'Anna' }
+];
+const studentiPerId = studenti.reduce((acc, studente) => {
+    acc[studente.id] = studente;
+    return acc;
+}, {}); // ← Oggetto vuoto come punto di partenza
+// Risultato: { 1: {id: 1, nome: 'Mario'}, 2: {id: 2, nome: 'Anna'} }
+
+// 5. Per CREARE ARRAY: valore iniziale = []
+const arrayDiArray = [[1, 2], [3, 4], [5, 6]];
+const appiattito = arrayDiArray.reduce((acc, arr) => acc.concat(arr), []);
+// [] + [1,2] + [3,4] + [5,6] = [1, 2, 3, 4, 5, 6]
+
+//POSSO FARE LA STESSA COSA CON  flat()
+//Il metodo flat() appiattisce gli array annidati di un livello (o più, se indicato).
+const arrayDiArray = [[1, 2], [3, 4], [5, 6]];
+
+const appiattito = arrayDiArray.flat();
+console.log(appiattito); // [1, 2, 3, 4, 5, 6]
+
+//OPPURE CON concat() E spread operator
+//Puoi appiattire usando concat() con lo spread operator:
+const appiattito = [].concat(...arrayDiArray);
+console.log(appiattito); // [1, 2, 3, 4, 5, 6]
+
+//REGOLA D'ORO PER VALORE INIZIALE CON REDUCE
+//Usa sempre un valore iniziale che ha lo stesso tipo del risultato che vuoi ottenere:**
+
+//- Vuoi un **numero**? → Inizia con `0` (per somme) o `1` (per prodotti)
+//- Vuoi una **stringa**? → Inizia con `''`
+//- Vuoi un **array**? → Inizia con `[]`
+//- Vuoi un **oggetto**? → Inizia con `{}`
+//- Vuoi un **booleano**? → Inizia con `true` o `false`
+
+/* Altri Esempi Pratici di reduce() 
+*/
+
+/*Esempi utili nelle applicazioni React:
+
+// 1. Contare elementi per categoria
+const prodotti = [
+    { nome: 'iPhone', categoria: 'elettronica' },
+    { nome: 'Maglietta', categoria: 'abbigliamento' },
+    { nome: 'iPad', categoria: 'elettronica' }
+];
+
+const prodottiPerCategoria = prodotti.reduce((acc, prodotto) => {
+    acc[prodotto.categoria] = (acc[prodotto.categoria] || 0) + 1; //Se è true(il prodotto contato ha la stessa categoria della chiave creata inizialmente(categoria)) or è 0(la categoria non è presente) conta +1 altrimenti non conta
+    return acc;
+}, {}); // ← Oggetto vuoto come valore iniziale
+// Risultato: { elettronica: 2, abbigliamento: 1 }
+
+// 2. Trovare il valore massimo/minimo
+const voti = [85, 92, 78, 96, 88];
+const votoMassimo = voti.reduce((max, voto) => voto > max ? voto : max, 0); //mette il primo che trova dentro max e poi confronta gli altri applicando la condizione e sostituendo se la condizione è true
+// Risultato: 96
+
+// 3. Creare una mappa chiave-valore
+const utenti = [
+    { id: 1, nome: 'Mario', email: 'mario@email.com' },
+    { id: 2, nome: 'Anna', email: 'anna@email.com' }
+];
+
+const utentiPerId = utenti.reduce((acc, utente) => {
+    acc[utente.id] = utente;
+    return acc;
+}, {}); // ← Oggetto vuoto come valore iniziale
+// Risultato: { 1: {id: 1, nome: 'Mario', ...}, 2: {id: 2, nome: 'Anna', ...} }
+
+*/
+
 
 }); //chiusura finale x far funzionare bottone HTML
 
