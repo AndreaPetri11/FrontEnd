@@ -269,12 +269,13 @@ function getRndInteger(min, max) {
 
 */
 
-/* 5. MAP  ===(ANCORA DA VEDERE) 
+/* 5. MAP  === */ 
 //Cos'è il metodo map()?
 //Il metodo map() è uno dei metodi più potenti degli array in JavaScript. 
-// Trasforma ogni elemento di un array applicando una funzione e crea un nuovo array con i risultati.
+// l'array originale resta invariata mentre la nuova array viene trasformata attraverso la funzione che scegliamo noi 
 
 //Sintassi Base
 const nuovoArray = arrayOriginale.map((item) => trasformazione);
-*/  
 });
+
+
