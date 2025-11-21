@@ -391,43 +391,108 @@
         const productList = document.getElementById("productList");
       }
 
-      // Per ogni prodotto nell'array productCatalog
+      //Per ogni prodotto nell'array productCatalog
       productCatalog.forEach((product) => {
         // Creo un nuovo div per ogni prodotto
         const productDiv = document.createElement("div");
-        productDiv.classList.add("product"); // Aggiungo la classe "product"
+        productDiv.classList.add("product"); //Aggiungo la classe "product"
 
-        // IMMAGINE PRODOTTO // Creo l'immagine per il prodotto
+        // IMMAGINE PRODOTTO //Creo l'immagine per il prodotto
         const productImage = document.createElement("img");
-        productImage.src = product.imageUrl; // Imposto l'URL dell'immagine
-        productImage.alt = product.name; // Impostoil nome come alt dell'immagine
+        productImage.src = product.imageUrl; //Imposto l'URL dell'immagine
+        productImage.alt = product.name; //Impostoil nome come alt dell'immagine
 
-        // NOME PRODOTTO // Creo un h3 dove inserire il nome del prodotto
+        // NOME PRODOTTO //Creo un h3 dove inserire il nome del prodotto
         const productName = document.createElement("h3");
-        productName.textContent = product.name; // Imposto il contenuto testuale di productName come il nome del prodotto
+        productName.textContent = product.name; //Imposto il contenuto testuale di productName come il nome del prodotto
 
-        // PREZZO // Creo il paragrafo dove inserirò il prezzo del prodotto
+        // PREZZO //Creo il paragrafo dove inserirò il prezzo del prodotto
         const productPrice = document.createElement("p");
-        productPrice.classList.add("price"); // Aggiungo la classe "price"
-        productPrice.textContent = `€ ${product.price.toFixed(2)}`; // Imposto il contenuto  come prezzo del prodotto usando .toFixed(2) per aggiustarlo a 2 decimali
+        productPrice.classList.add("price"); //Aggiungo la classe "price"
+        productPrice.textContent = `€ ${product.price.toFixed(2)}`; //Imposto il contenuto  come prezzo del prodotto usando .toFixed(2) per aggiustarlo a 2 decimali
 
         // BOTTONE //Creo il bottone "Aggiungi al carrello"
         const addToCartButton = document.createElement("button");
         addToCartButton.textContent = "Aggiungi al carrello";
         addToCartButton.setAttribute("data-id", product.id);
 
-        // Aggiungo il tutto al div del prodotto
+        //Aggiungo l'EventListener
+        addToCartButton.addEventListener("click", (event) => {
+          //Recupero l'ID del prodotto dal bottone
+          const productId = parseInt(event.target.getAttribute("data-id"));
+
+          //Funzione per gestire l'aggiunta al carrello
+          addToCart(productId);
+        });
+
+        //Aggiungo il tutto al div del prodotto
         productDiv.appendChild(productImage);
         productDiv.appendChild(productName);
         productDiv.appendChild(productPrice);
         productDiv.appendChild(addToCartButton);
 
-        // Aggiungo il div del prodotto al catalogo
+        //Aggiungo il div del prodotto al catalogo
         productList.appendChild(productDiv);
       });
 
-      //Array del Carrello
-      const cart = [{ productId: 2, quantity: 3 }];
+      function addToCart(productId) {
+        //Verifico se il prodotto è già nel carrello
+        const productInCart = cart.find((item) => item.id === productId);
+
+        if (productInCart) {
+          //Se il prodotto esiste già, incremento la quantità
+          productInCart.quantity++;
+        } else {
+          //Se il prodotto non è presente, lo aggiungo con quantity: 1
+          const product = productCatalog.find((item) => item.id === productId);
+          cart.push({ ...product, quantity: 1 }); // Aggiungo tutte le proprietà del prodotto e imposto quantità: 1
+        }
+        updateCart();
+      }
+
+      //Funzione per aggiornare il carrello
+      function updateCart() {
+        const cartItemsContainer = document.getElementById("cartItems");
+        const subtotalElement = document.getElementById("subtotal");
+        const totalElement = document.getElementById("total");
+
+        //Pulisco il contenuto del carrello prima di ricaricarlo
+        cartItemsContainer.innerHTML = "";
+
+        let subtotal = 0;
+
+        //Per ogni prodotto creo un div con:
+        cart.forEach((item) => {
+          const cartItemDiv = document.createElement("div");
+          cartItemDiv.classList.add("cart-item");
+          //nome
+          const itemName = document.createElement("h4");
+          itemName.textContent = item.name;
+          //Quantità
+          const itemQuantity = document.createElement("span");
+          itemQuantity.textContent = `Quantità: ${item.quantity}`;
+          //Prezzo
+          const itemPrice = document.createElement("span");
+          itemPrice.textContent = `€ ${(item.price * item.quantity).toFixed(
+            2
+          )}`;
+
+          //Aggiungo il tutto al div creato
+          cartItemDiv.appendChild(itemName);
+          cartItemDiv.appendChild(itemQuantity);
+          cartItemDiv.appendChild(itemPrice);
+
+          //Metto il div creato nel suo contenitore
+          cartItemsContainer.appendChild(cartItemDiv);
+
+          //Aggiungo al subtotale il prezzo del prodotto*la quantità del prodotti
+          subtotal += item.price * item.quantity;
+        });
+
+        //Aggiorno il subtotale e il totale
+        subtotalElement.textContent = `€ ${subtotal.toFixed(2)}`;
+        totalElement.textContent = `€ ${subtotal.toFixed(2)}`;
+      }
     </script>
   </body>
 </html>
