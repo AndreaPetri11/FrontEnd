@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esercitazione ECommerce_Cart</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 20px;
+        background-color: #3eaf18;
+        color: white;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      header h1 {
+        font-size: 18px;
+        margin-left: 10px;
+      }
+
+      header input[type="search"] {
+        padding: 4px;
+        font-size: 14px;
+        width: 180px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 20px;
+        flex: 1;
+      }
+
+      #listaProdotti {
+        flex: 7;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      #carrello {
+        flex: 3;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 60px;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .totals {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+
+      .totals span {
+        font-weight: bold;
+      }
+
+      .product {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 15px;
+        text-align: center;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        flex-basis: 30%;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .product button {
+        background-color: #3eaf18;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .product button:hover {
+        background-color: #35a213;
+      }
+
+      @media (max-width: 768px) {
+        #listaProdotti {
+          flex-direction: column;
+        }
+
+        .product {
+          flex-basis: 100%;
+          max-width: none;
+        }
+
+        header input[type="search"] {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .product {
+          flex-basis: 100%;
+          margin: 10px 0;
+        }
+
+        header h1 {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <div>
+          <h1>CompraQui.it</h1>
+        </div>
+        <div>
+          <input type="search" placeholder="Cerca il prodotto" />
+        </div>
+      </header>
+
+      <section id="listaProdotti">
+        <div id="productList">
+          <h1>Catalogo Prodotti</h1>
+          <!--<div class="product">
+            <img src="" alt="Maglietta" />
+            <h3>Maglietta</h3>
+            <p class="price">€ 19.99</p>
+            <button>Aggiungi al carrello</button>
+          </div>
+          <div class="product">
+            <img src="" alt="Jeans" />
+            <h3>Jeans</h3>
+            <p class="price">€ 49.99</p>
+            <button>Aggiungi al carrello</button>
+          </div>
+          <div class="product">
+            <img src="" alt="Sneakers" />
+            <h3>Sneakers</h3>
+            <p class="price">€ 89.99</p>
+            <button>Aggiungi al carrello</button>
+          </div>
+          <div class="product">
+            <img src="" alt="Sneakers" />
+            <h3>Sneakers</h3>
+            <p class="price">€ 89.99</p>
+            <button>Aggiungi al carrello</button>
+          </div>
+          <div class="product">
+            <img src="" alt="Sneakers" />
+            <h3>Sneakers</h3>
+            <p class="price">€ 89.99</p>
+            <button>Aggiungi al carrello</button>
+          </div>
+          <div class="product">
+            <img src="" alt="Sneakers" />
+            <h3>Sneakers</h3>
+            <p class="price">€ 89.99</p>
+            <button>Aggiungi al carrello</button>
+          </div>
+          <div class="product">
+            <img src="" alt="Sneakers" />
+            <h3>Sneakers</h3>
+            <p class="price">€ 89.99</p>
+            <button id="addToCart">Aggiungi al carrello</button>
+          </div>-->
+        </div>
+      </section>
+
+      <section id="carrello">
+        <h2>Contenuto del Carrello:</h2>
+        <div id="cartItems"></div>
+        <div class="totals">
+          <span>Subtotale</span>
+          <span id="subtotal">€ 0.00</span>
+        </div>
+        <div class="totals">
+          <span>Totale</span>
+          <span id="total">€ 0.00</span>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      //Array con prodotti
+      const productCatalog = [
+        {
+          id: 1,
+          name: "Agenda",
+          price: 10,
+          imageUrl: "https://example.com/agenda.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 2,
+          name: "Penna",
+          price: 2,
+          imageUrl: "https://example.com/penna.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 3,
+          name: "Zaino classico",
+          price: 30,
+          imageUrl: "https://example.com/zainoclassico.jpg",
+          category: "Zaini",
+        },
+        {
+          id: 4,
+          name: "Matita",
+          price: 1,
+          imageUrl: "https://example.com/matita.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 5,
+          name: "Gomma",
+          price: 1.5,
+          imageUrl: "https://example.com/gomma.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 6,
+          name: "Astuccio",
+          price: 8,
+          imageUrl: "https://example.com/astuccio.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 7,
+          name: "Quaderno a quadretti",
+          price: 12,
+          imageUrl: "https://example.com/quaderno-quadretti.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 8,
+          name: "Evidenziatore",
+          price: 3,
+          imageUrl: "https://example.com/evidenziatore.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 9,
+          name: "Forbici",
+          price: 4,
+          imageUrl: "https://example.com/forbici.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 10,
+          name: "Righello",
+          price: 2.5,
+          imageUrl: "https://example.com/righello.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 11,
+          name: "Colla Stick",
+          price: 2,
+          imageUrl: "https://example.com/colla.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 12,
+          name: "Blocco Appunti",
+          price: 6,
+          imageUrl: "https://example.com/blocco-appunti.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 13,
+          name: "Cartellina",
+          price: 1,
+          imageUrl: "https://example.com/cartellina.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 14,
+          name: "Borraccia",
+          price: 15,
+          imageUrl: "https://example.com/borraccia.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 15,
+          name: "Calcolatrice",
+          price: 20,
+          imageUrl: "https://example.com/calcolatrice.jpg",
+          category: "Tecnologia",
+        },
+        {
+          id: 16,
+          name: "Portachiavi",
+          price: 5,
+          imageUrl: "https://example.com/portachiavi.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 17,
+          name: "Zaino Porta-Laptop",
+          price: 45,
+          imageUrl: "https://example.com/zaino-laptop.jpg",
+          category: "Zaini",
+        },
+        {
+          id: 18,
+          name: "Mouse Wireless",
+          price: 18,
+          imageUrl: "https://example.com/mouse.jpg",
+          category: "Tecnologia",
+        },
+        {
+          id: 19,
+          name: "Taccuino Premium",
+          price: 14,
+          imageUrl: "https://example.com/taccuino-premium.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 20,
+          name: "Set Penne Colorate",
+          price: 7,
+          imageUrl: "https://example.com/penne-colorate.jpg",
+          category: "Scrittura",
+        },
+        {
+          id: 21,
+          name: "Planner Settimanale",
+          price: 9,
+          imageUrl: "https://example.com/planner.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 22,
+          name: "Portadocumenti",
+          price: 10,
+          imageUrl: "https://example.com/portadocumenti.jpg",
+          category: "Accessori",
+        },
+        {
+          id: 23,
+          name: "Custodia Tablet",
+          price: 22,
+          imageUrl: "https://example.com/custodia-tablet.jpg",
+          category: "Accessori",
+        },
+      ];
+
+      //seleziono il div del catalogo dove inserirò i prodotti
+      function showCatalog() {
+        const productList = document.getElementById("productList");
+      }
+
+      // Per ogni prodotto nell'array productCatalog
+      productCatalog.forEach((product) => {
+        // Creo un nuovo div per ogni prodotto
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product"); // Aggiungo la classe "product"
+
+        // IMMAGINE PRODOTTO // Creo l'immagine per il prodotto
+        const productImage = document.createElement("img");
+        productImage.src = product.imageUrl; // Imposto l'URL dell'immagine
+        productImage.alt = product.name; // Impostoil nome come alt dell'immagine
+
+        // NOME PRODOTTO // Creo un h3 dove inserire il nome del prodotto
+        const productName = document.createElement("h3");
+        productName.textContent = product.name; // Imposto il contenuto testuale di productName come il nome del prodotto
+
+        // PREZZO // Creo il paragrafo dove inserirò il prezzo del prodotto
+        const productPrice = document.createElement("p");
+        productPrice.classList.add("price"); // Aggiungo la classe "price"
+        productPrice.textContent = `€ ${product.price.toFixed(2)}`; // Imposto il contenuto  come prezzo del prodotto usando .toFixed(2) per aggiustarlo a 2 decimali
+
+        productPrice.textContent = `€ ${product.price.toFixed(2)}`;
+
+        // BOTTONE //Creo il bottone "Aggiungi al carrello"
+        const addToCartButton = document.createElement("button");
+        addToCartButton.textContent = "Aggiungi al carrello";
+        addToCartButton.setAttribute("data-id", product.id);
+
+        // Aggiungo il tutto al div del prodotto
+        productDiv.appendChild(productImage);
+        productDiv.appendChild(productName);
+        productDiv.appendChild(productPrice);
+        productDiv.appendChild(addToCartButton);
+
+        // Aggiungo il div del prodotto al catalogo
+        productList.appendChild(productDiv);
+      });
+
+      //Array del Carrello
+      const cart = [{ productId: 2, quantity: 3 }];
+    </script>
+  </body>
+</html>
