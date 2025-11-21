@@ -411,8 +411,6 @@
         productPrice.classList.add("price"); // Aggiungo la classe "price"
         productPrice.textContent = `€ ${product.price.toFixed(2)}`; // Imposto il contenuto  come prezzo del prodotto usando .toFixed(2) per aggiustarlo a 2 decimali
 
-        productPrice.textContent = `€ ${product.price.toFixed(2)}`;
-
         // BOTTONE //Creo il bottone "Aggiungi al carrello"
         const addToCartButton = document.createElement("button");
         addToCartButton.textContent = "Aggiungi al carrello";
