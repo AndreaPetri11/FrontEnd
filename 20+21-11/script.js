@@ -1,4 +1,4 @@
-// script.js
+// dichiarazione variabili per funzione e bottone HTML
 const btn = document.getElementById('run');
 const out = document.getElementById('output');
 
@@ -6,12 +6,11 @@ const out = document.getElementById('output');
 function log(title, content) {
   out.textContent += `-- ${title} --\n`;
   out.textContent += (typeof content === 'string' ? content : JSON.stringify(content, null, 2)) + '\n\n';
-}
-
+};
 btn.addEventListener('click', () => {
   out.textContent = '';
 
-  // Qui inizieremo a incastrare gli esempi
+/* inizio esempi */
 
 /* 1. Operatore Ternario ===
 
@@ -211,13 +210,13 @@ function getRndInteger(min, max) {
 
 */
 
-/* **Approfondimento:**
+/* Approfondimento:
 
-// **Cos'è il Destructuring?**
+// Cos'è il Destructuring?
 
 //Il **destructuring** è una sintassi che permette di **estrarre** valori da array e oggetti e assegnarli a variabili in modo rapido e elegante.
 //-----------------------------------------------------------------------
-//**1. DESTRUCTURING DI ARRAY**
+//1. DESTRUCTURING DI ARRAY
 
 //**Sintassi Base**
 
@@ -229,7 +228,7 @@ function getRndInteger(min, max) {
 //- **Più leggibile**: Assegnazioni multiple in una volta
 //- **Posizionale**: L'ordine delle variabili corrisponde all'ordine nell'array
 
-// **2. DESTRUCTURING CON REST OPERATOR**
+// 2. DESTRUCTURING CON REST OPERATOR
 
 // `const [primo, secondo, ...resto] = ["a", "b", "c", "d", "e"];`
 
@@ -269,13 +268,180 @@ function getRndInteger(min, max) {
 
 */
 
-/* 5. MAP  === */ 
+/* 5. MAP  ===  
+
 //Cos'è il metodo map()?
 //Il metodo map() è uno dei metodi più potenti degli array in JavaScript. 
-// l'array originale resta invariata mentre la nuova array viene trasformata attraverso la funzione che scegliamo noi 
+//l'array originale resta invariata mentre la nuova array viene trasformata attraverso la funzione che scegliamo noi 
+//Il nuovo array ha la stessa lunghezza	--> 5 elementi → 5 elementi
+//si puo' usare al posto del "for of"
 
 //Sintassi Base
-const nuovoArray = arrayOriginale.map((item) => trasformazione);
-});
+
+// const nuovoArray = arrayOriginale.map((item) => trasformazione);
+
+//log("METODO MAP()", "Trasforma ogni elemento di un array e crea un nuovo array");
+
+  // ESEMPIO 1: Numeri - Raddoppiare ogni numero
+  const numeri = [1, 2, 3, 4, 5];
+  log("Array originale numeri", numeri);
+
+   // Metodo tradizionale (LUNGO!)
+  const raddoppiatiTradizionale = [];
+  for (let i = 0; i < numeri.length; i++) {
+    raddoppiatiTradizionale.push(numeri[i] * 2);
+  }
+  log("Metodo tradizionale", raddoppiatiTradizionale);
+
+  // CON MAP (MODERNO!)
+  const raddoppiati = numeri.map((numero) => numero * 2);
+  log("Con map()", raddoppiati);
+  console.table(raddoppiati);
+
+  // ESEMPIO 2: Stringhe - Trasformare nomi in maiuscolo
+  const nomi = ["mario", "luigi", "peach", "bowser"];
+  log("Nomi originali", nomi);
+
+  const nomiMaiuscoli = nomi.map((nome) => nome.toUpperCase());
+  log("Nomi in maiuscolo", nomiMaiuscoli);
+
+// ESEMPIO 3: Oggetti - Trasformare array di oggetti
+  const prodotti = [
+    { nome: "Laptop", prezzo: 800 },
+    { nome: "Mouse", prezzo: 25 },
+    { nome: "Tastiera", prezzo: 60 },
+  ];
+  log("Prodotti originali", prodotti);
+  console.table(prodotti);
+
+  // Aggiungere IVA del 22%
+  const prodottiConIva = prodotti.map((prodotto) => ({
+    nome: prodotto.nome,
+    prezzoBase: prodotto.prezzo,
+    prezzoConIva: prodotto.prezzo * 1.22,
+    categoria: "elettronica" //numero elementi invariati ma aggiungiamo qualcosa agli oggetti dell'array
+  }));
+  log("Prodotti con IVA", prodottiConIva);
+  console.table(prodottiConIva);
+
+// ESEMPIO 4: Map con indice
+  const lettere = ["a", "b", "c"];
+  const lettereConIndice = lettere.map((lettera, indice) => `${indice}: ${lettera}`);
+  log("Lettere con indice", lettereConIndice);
+  console.table(lettereConIndice);
+
+   // ESEMPIO 5: Map + Destructuring
+  const persone = [
+    { nome: "Anna", eta: 25 },
+    { nome: "Marco", eta: 30 },
+    { nome: "Sofia", eta: 22 },
+    { nome: "Beatrice", eta: 42 },
+  ];
+
+  const saluti = persone.map(({ nome, eta }) => `Ciao ${nome}, hai ${eta} anni!`); 
+  //grazie al map+destructoring stiamo trasformando un array di elementi in un array di stringhe
+  log("Saluti personalizzati", saluti[1]);
+  console.table(saluti[1]);//posso usare anche l'indice per restituire un elemento specifico
+  log("Saluti personalizzati", saluti[3]);
+  console.table(saluti[3]);
+
+
+  //stessa cosa ma scritta senza destructoring
+  const saluti2 = persone.map((item) => `Ciao${item.nome}, hai ${item.eta} anni!`);
+  log("Saluti personalizzati", saluti2[3]);
+  console.table(saluti2[3]);
+
+   // ESEMPIO PRATICO: Creare lista HTML
+  const frutta = ["mela", "banana", "arancia"];
+  const listaHTML = frutta.map((frutto) => `<li>${frutto}</li>`);
+  log("Lista HTML", listaHTML);
+  console.table(listaHTML);
+
+  */
+
+/* 6. METODO FILTER() - RESTITUISCE UNA NUOVO ARRAY COMPOSTA DA ELEMENTI CHE RISPETTANO DELLE CONDIZIONI===  
+//Il metodo filter() filtra gli elementi di un array in base a una condizione. 
+//Restituisce un nuovo array contenente solo gli elementi che soddisfano il criterio specificato.
+
+
+//Sintassi Base
+// const arrayFiltrato = arrayOriginale.filter(elemento => condizione);
+
+//log("METODO FILTER()", "Filtra elementi di un array basandosi su una condizione");
+
+// ESEMPIO 1: Numeri - Filtrare numeri pari
+  const numeriMisti = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  log("Array originale", numeriMisti);
+
+  // Metodo tradizionale (LUNGO!)
+  const pariTradizionale = [];
+  for (let i = 0; i < numeriMisti.length; i++) {
+    if (numeriMisti[i] % 2 === 0) {
+      pariTradizionale.push(numeriMisti[i]);
+    }
+  }
+  log("Metodo tradizionale", pariTradizionale);
+
+  // CON FILTER (MODERNO!)
+  const pari = numeriMisti.filter((numero) => numero % 2 === 0);
+  log("Con filter()", pari);
+
+  // ESEMPIO 2: Stringhe - Filtrare nomi lunghi
+  const nomiVarii = ["Ana", "Alessandro", "Bo", "Francesca", "Giuseppe"];
+  log("Nomi originali", nomiVarii);
+
+  const nomiLunghi = nomiVarii.filter((nome) => nome.length > 4);
+  log("Nomi con più di 4 lettere", nomiLunghi);
+
+  // ESEMPIO 3: Oggetti - Filtrare prodotti per prezzo
+  const tuttiProdotti = [
+    { nome: "Laptop", prezzo: 800, categoria: "tech" },
+    { nome: "Mouse", prezzo: 25, categoria: "tech" },
+    { nome: "Libro", prezzo: 15, categoria: "cultura" },
+    { nome: "Tastiera", prezzo: 60, categoria: "tech" },
+    { nome: "Penna", prezzo: 3, categoria: "ufficio" },
+  ];
+  log("Tutti i prodotti", tuttiProdotti);
+
+  // Prodotti sotto i 50 euro
+  const prodottiEconomici = tuttiProdotti.filter((prodotto) => prodotto.prezzo < 50);
+  log("Prodotti sotto 50€", prodottiEconomici);
+
+  // Prodotti tech
+  const prodottiTech = tuttiProdotti.filter((prodotto) => prodotto.categoria === "tech");
+  log("Prodotti tech", prodottiTech);
+
+  // ESEMPIO 4: Filter con condizioni multiple
+  const studenti = [
+    { nome: "Mario", voto: 8, presente: true },
+    { nome: "Luigi", voto: 6, presente: false },
+    { nome: "Peach", voto: 9, presente: true },
+    { nome: "Bowser", voto: 4, presente: true },
+  ];
+
+  const studentiPromossi = studenti.filter((studente) => studente.voto >= 6 && studente.presente === true);
+  log("Studenti promossi (voto≥6 E presenti)", studentiPromossi);
+
+  // ESEMPIO 5: Filter + Map combinati
+  const prezziScontati = tuttiProdotti
+    .filter((prodotto) => prodotto.prezzo > 20) // Solo prodotti sopra 20€
+    .map((prodotto) => ({
+      ...prodotto,
+      prezzoScontato: prodotto.prezzo * 0.8, // Sconto del 20%
+    }));
+  log("Prodotti sopra 20€ con sconto", prezziScontati);
+
+  // ESEMPIO PRATICO: Ricerca/Search  //pattern per ricerca con .toLowerCase
+  const ricerca = "R";
+  const fruttiTrovati = ["Mela", "Banana", "Arancia", "Pera", "Uva"].filter((frutto) => frutto.toLowerCase().includes(ricerca.toLowerCase()));
+  log(`Frutti che contengono "${ricerca}"`, fruttiTrovati);
+
+*/
+
+
+}); //chiusura finale x far funzionare bottone HTML
+
+
+
 
 
