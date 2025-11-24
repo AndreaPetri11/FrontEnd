@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Il viaggio del codice nel browser</title>
+  </head>
+  <body>
+    <!--
+
+    # **1. Introduzione - Il viaggio del codice nel browser**
+
+Quando apri una pagina web, il browser segue una **sequenza precisa**:
+
+1. Legge l’HTML *riga per riga*
+2. Costruisce il **DOM**
+3. Carica il CSS e costruisce il **CSSOM**
+4. Se tutto è pronto → crea il **Render Tree**
+5. Nel frattempo deve anche capire **cosa fare con gli `<script>`**
+
+Ma oggi gli script non sono tutti uguali:
+
+- Script *tradizionali*
+- Script con `defer`
+- Script con `async`
+- Script con `type="module"`
+- Script con `nomodule`
+
+**Cosa succede davvero** dietro le quinte?
+[1] Browser scarica HTML
+     │
+[2] Inizia a leggerlo dall’alto verso il basso
+     │
+[3] Incontra <link rel="stylesheet">
+     ├─> scarica CSS in parallelo
+     └─> costruisce CSSOM quando pronti
+     │
+[4] Incontra <script> (diversi comportamenti!)
+     │
+[5] Quando DOM + CSSOM pronti → Render Tree
+     │
+[6] Esecuzione JS finale + interattività
+
+
+
+
+[1] Browser scarica HTML
+     │
+[2] Inizia a leggerlo dall’alto verso il basso
+     │
+[3] Incontra <link rel="stylesheet">
+     ├─> scarica CSS in parallelo
+     └─> costruisce CSSOM quando pronti
+     │
+[4] Incontra <script> (diversi comportamenti!)
+     │
+[5] Quando DOM + CSSOM pronti → Render Tree
+     │
+[6] Esecuzione JS finale + interattività
+
+
+
+3.1 Script classico (il più "vecchio")
+
+<script src="app.js"></script>
+
+### ⚠️ Comportamento:
+
+- **Blocca il parsing dell’HTML**
+- Il browser deve:
+    - fermarsi
+    - scaricare lo script
+    - eseguirlo
+    - riprendere il parsing
+
+È come dire:
+
+> “Ferma tutto! Devo leggere questo file PRIMA di continuare.”
+
+HTML parsing ──■stop■──── continues
+                 ↓
+             download JS
+                 ↓
+             execute JS
+
+
+------------------------------------------------------------------------------------------
+
+3.2 Script con `defer`
+
+```html
+<script defer src="app.js"></script>
+```
+
+### ✔️ Comportamento moderno e ottimale:
+
+- Non blocca l’HTML
+- Viene scaricato in parallelo
+- Eseguito **solo dopo il DOM**, ma **prima del DOMContentLoaded**
+- Mantiene l’ordine
+
+Comportamento:
+HTML parsing ──────────────► done
+JS download ──parallel─────► done
+JS execution ───────────────► after DOM ready
+
+
+------------------------------------------------------------------------------------------
+
+3.3 Script con `async`
+
+```
+<script async src="track.js"></script>
+```
+
+### ✔️ Adatto per:
+
+- analytics
+- tracker
+- script non critici
+
+### ❗ Comportamento:
+
+- Non blocca l’HTML
+- Viene eseguito **appena è scaricato**
+- Non rispetta l’ordine degli script
+
+Comportamento:
+HTML parsing ──────────────►
+JS download ─parallel──────► execute immediately!
+
+
+------------------------------------------------------------------------------------------
+4. JavaScript moderno: `type="module"`
+
+```html
+<script type="module" src="main.js"></script>
+```
+
+## 🎉 Cosa introduce:
+
+- import/export
+- scope isolato
+- strict mode automatico
+- esecuzione *defer by default*
+- caching intelligente
+- dependency graph (importa altri file JS automaticamente)
+
+Comportamento:
+HTML parsing ───────────────► done
+module download ─parallel───►
+module execution ───────────► after DOM (like defer)
+
+-->
+  </body>
+</html>
