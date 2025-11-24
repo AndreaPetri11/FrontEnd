@@ -1,23 +1,9 @@
-const ul = document.getElementById(`ul`);
+import { apiCall } from "./apiCall.js";
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";
-async function apiCall(endpoint) {
-  try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`);
+const ul = document.getElementById(`ul`);
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    console.log("API Success", `Dati ricevuti da ${endpoint}`);
-    return data;
-  } catch (error) {
-    console.log("API Error", `Errore per ${endpoint}: ${error.message}`);
-    return null;
-  }
-}
 async function fetchUsers() {
-  const users = await apiCall(`/users`);
+  const users = await apiCall(`${API_BASE_URL}/users`);
   if (users) {
     console.log("Dati Users ricevuti", users);
   }
