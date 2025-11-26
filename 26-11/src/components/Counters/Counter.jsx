@@ -5,7 +5,7 @@ function Counter() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <div className="counterTest">
       <br></br>
 
       <button className="counter" onClick={() => setCount(count + 1)}>
