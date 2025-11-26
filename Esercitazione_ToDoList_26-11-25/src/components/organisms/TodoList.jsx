@@ -1,15 +1,16 @@
 import "./TodoList.css";
 import { Cancella } from "../atoms/Button.jsx";
 
-function TodoList({ todos, onDelete }) {
+function TodoList({ puntiLista, onDelete }) {
   return (
     <div>
       <h3>My To Do List:</h3>
       <ul>
-        {todos.map((todo, i) => (
+        {puntiLista.map((punto, i) => (
           <li key={i}>
-            <strong>{todo.name}</strong> <br></br>
-            {todo.description}
+            <strong>Titolo: </strong> {punto.name} <br></br>
+            <strong>Decrizione:</strong> {punto.description} <br></br>
+            <strong>Categoria:</strong> <i>{punto.category}</i>
             <Cancella onClick={() => onDelete(i)} />
           </li>
         ))}

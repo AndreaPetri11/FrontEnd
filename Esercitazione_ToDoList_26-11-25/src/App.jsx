@@ -2,30 +2,37 @@ import { useState } from "react";
 import "./App.css";
 
 import AddOnList from "./components/atoms/Input.jsx";
-import { Aggiungi, Cancella } from "./components/atoms/Button.jsx";
+import { Aggiungi } from "./components/atoms/Button.jsx";
+import { CancellaTutto } from "./components/atoms/Button.jsx";
 import TodoList from "./components/organisms/TodoList.jsx";
 
 function App() {
-  const [action, setAction] = useState({ name: "", description: "" });
-  const [todos, setTodos] = useState([]);
+  const [action, setAction] = useState({
+    name: "",
+    description: "",
+    category: "",
+  });
 
-  const addTodo = () => {
-    if (!action.name || !action.description) return;
-    setTodos([...todos, action]);
-    setAction({ name: "", description: "" });
+  const [punti, setPuntiLista] = useState([]);
+
+  const addPunto = () => {
+    if (!action.name || !action.description || !action.category) return;
+    setPuntiLista([...punti, action]);
+    setAction({ name: "", description: "", category: "" });
   };
 
-  const deleteTodo = (i) => {
-    const newTodos = [...todos];
-    newTodos.splice(i, 1);
-    setTodos(newTodos);
+  const deletePunto = (i) => {
+    const nuoviPunti = [...punti];
+    nuoviPunti.splice(i, 1);
+    setPuntiLista(nuoviPunti);
   };
 
   return (
     <div>
-      <AddOnList action={action} onUpdateList={setAction} addTodo={addTodo} />
-      <Aggiungi onClick={addTodo} />
-      <TodoList todos={todos} onDelete={deleteTodo} />
+      <AddOnList action={action} onUpdateList={setAction} addPunto={addPunto} />
+      <Aggiungi onClick={addPunto} />
+      <CancellaTutto onClick={() => setPuntiLista([])} />
+      <TodoList puntiLista={punti} onDelete={deletePunto} />
     </div>
   );
 }

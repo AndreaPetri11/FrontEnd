@@ -1,10 +1,10 @@
 import "./Input.css";
 
-function AddOnList({ action, onUpdateList, addTodo }) {
+function AddOnList({ action, onUpdateList, addPunto }) {
   const pressEnter = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      addTodo();
+      addPunto();
     }
   };
   return (
@@ -14,21 +14,31 @@ function AddOnList({ action, onUpdateList, addTodo }) {
       <input
         type="text"
         value={action.name}
+        placeholder="Inserisci titolo qua"
         onChange={(e) => onUpdateList({ ...action, name: e.target.value })}
         onKeyDown={pressEnter}
       />
-      <span>Inserisci titolo azione</span>
+
       <br />
 
       <input
         type="text"
         value={action.description}
+        placeholder="Inserisci descrizione qua"
         onChange={(e) =>
           onUpdateList({ ...action, description: e.target.value })
         }
         onKeyDown={pressEnter}
       />
-      <span>Inserisci descrizione azione</span>
+
+      <br />
+      <input
+        type="text"
+        value={action.category}
+        placeholder="Inserisci categoria qua"
+        onChange={(e) => onUpdateList({ ...action, category: e.target.value })}
+        onKeyDown={pressEnter}
+      />
     </div>
   );
 }
