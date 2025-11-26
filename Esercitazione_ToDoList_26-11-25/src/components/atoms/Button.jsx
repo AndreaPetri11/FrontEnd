@@ -1,7 +1,17 @@
 import "./Button.css";
 
-function Button({ onClick }) {
-  return <button onClick={onClick}>Aggiungi</button>;
+export function Aggiungi({ onClick }) {
+  return (
+    <button className="btn-add" onClick={onClick}>
+      Aggiungi
+    </button>
+  );
 }
 
-export default Button;
+export function Cancella({ onClick }) {
+  return (
+    <button className="btn-delete" onClick={onClick}>
+      ✕
+    </button>
+  );
+}

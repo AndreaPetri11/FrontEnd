@@ -1,26 +1,34 @@
 import "./Input.css";
-import Button from "./Button";
 
 function AddOnList({ action, onUpdateList, addTodo }) {
+  const pressEnter = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addTodo();
+    }
+  };
   return (
     <div>
       <h3>Inserisci azione da fare alla lista</h3>
 
-      <span></span>
       <input
         type="text"
         value={action.name}
         onChange={(e) => onUpdateList({ ...action, name: e.target.value })}
+        onKeyDown={pressEnter}
       />
+      <span>Inserisci titolo azione</span>
       <br />
-      <br />
+
       <input
         type="text"
         value={action.description}
         onChange={(e) =>
           onUpdateList({ ...action, description: e.target.value })
         }
+        onKeyDown={pressEnter}
       />
+      <span>Inserisci descrizione azione</span>
     </div>
   );
 }
