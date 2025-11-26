@@ -1,0 +1,11 @@
+.counter-app {
+  background-color: purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  font-size: 40px;
+  padding: 10px;
+}

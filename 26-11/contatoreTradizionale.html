@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contatore Tradizionale</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 id="title">Contatore Tradizionale in JS Vanilla</h1>
+      <div id="counter-display">0</div>
+      <div id="parity">Pari</div>
+      <button id="increment">+</button>
+      <button id="decrement">-</button>
+      <div id="status" style="color: green">Positivo</div>
+    </div>
+
+    <script>
+      // 😱 PROBLEMA: Lo stato è sparso in più posti!
+      let counterValue = 0; // Stato nel JavaScript
+
+      const counterDisplay = document.getElementById("counter-display");
+      const parityDisplay = document.getElementById("parity");
+      const statusDisplay = document.getElementById("status");
+
+      function increment() {
+        counterValue++; // Aggiorno lo stato
+
+        // 😱 Devo ricordarmi di aggiornare MANUALMENTE ogni elemento!
+        counterDisplay.textContent = counterValue;
+
+        // Aggiorno la parità
+        if (counterValue % 2 === 0) {
+          parityDisplay.textContent = "Pari";
+        } else {
+          parityDisplay.textContent = "Dispari";
+        }
+
+        // Aggiorno lo status e il colore
+        if (counterValue > 0) {
+          statusDisplay.textContent = "Positivo";
+          statusDisplay.style.color = "green";
+        } else if (counterValue < 0) {
+          statusDisplay.textContent = "Negativo";
+          statusDisplay.style.color = "red";
+        } else {
+          statusDisplay.textContent = "Zero";
+          statusDisplay.style.color = "gray";
+        }
+      }
+
+      function decrement() {
+        counterValue--; // Aggiorno lo stato
+
+        // 😱 Devo RIFARE tutto questo lavoro per ogni funzione!
+        counterDisplay.textContent = counterValue;
+
+        if (counterValue % 2 === 0) {
+          parityDisplay.textContent = "Pari";
+        } else {
+          parityDisplay.textContent = "Dispari";
+        }
+
+        if (counterValue > 0) {
+          statusDisplay.textContent = "Positivo";
+          statusDisplay.style.color = "green";
+        } else if (counterValue < 0) {
+          statusDisplay.textContent = "Negativo";
+          statusDisplay.style.color = "red";
+        } else {
+          statusDisplay.textContent = "Zero";
+          statusDisplay.style.color = "gray";
+        }
+      }
+
+      document.getElementById("increment").addEventListener("click", increment);
+      document.getElementById("decrement").addEventListener("click", decrement);
+    </script>
+  </body>
+</html>

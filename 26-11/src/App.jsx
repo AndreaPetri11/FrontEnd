@@ -1,4 +1,7 @@
+//Utilities
 import "./App.css";
+
+//Components
 import Button from "./components/Buttons/Button";
 
 import {
@@ -9,7 +12,11 @@ import {
 
 import Counter from "./components/Counters/Counter";
 
+import CounterApp from "./components/CounterApp/CounterApp.jsx";
+
 import ShoppingList from "./components/ShoppingList/ShoppingList.jsx";
+
+//Mock datas
 import { items } from "./mock/items.js";
 import { products } from "./mock/items.js";
 
@@ -32,6 +39,7 @@ function App() {
       <h2>Shopping List test</h2>
       <ShoppingList items={items} />
       <ShoppingList items={products} />
+      <CounterApp />
     </section>
   );
 }
