@@ -1,10 +1,29 @@
 import { useState } from "react";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+import AddOnList from "./components/atoms/Input.jsx";
+import Button from "./components/atoms/Button.jsx";
+import TodoList from "./components/organisms/TodoList.jsx";
 
-  return <></>;
+function App() {
+  const [action, setAction] = useState({ name: "", description: "" });
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = () => {
+    if (!action.name || !action.description) return;
+
+    setTodos([...todos, action]);
+
+    setAction({ name: "", description: "" });
+  };
+
+  return (
+    <div>
+      <AddOnList action={action} onUpdateList={setAction} appTodo={addTodo} />
+      <Button onClick={addTodo} />
+      <TodoList todos={todos} />
+    </div>
+  );
 }
 
 export default App;
