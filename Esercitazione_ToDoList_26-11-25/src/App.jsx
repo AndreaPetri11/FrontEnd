@@ -21,9 +21,9 @@ function App() {
     setAction({ name: "", description: "", category: "" });
   };
 
-  const deletePunto = (i) => {
+  const deletePunto = (index) => {
     const nuoviPunti = [...punti];
-    nuoviPunti.splice(i, 1);
+    nuoviPunti.splice(index, 1);
     setPuntiLista(nuoviPunti);
   };
 
