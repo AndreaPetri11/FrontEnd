@@ -2,12 +2,14 @@ import "./App.css";
 import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import ShowCase from "./components/ShowCase/ShowCase";
 import { prodotti } from "./mock/products";
+import { useState } from "react";
 
 function App() {
+  const [items, setItems] = useState([]);
   return (
     <>
-      <ShowCase prodotti={prodotti} />
-      <ShoppingCart />
+      <ShowCase prodotti={prodotti} items={items} setItems={setItems} />
+      <ShoppingCart items={items} />
     </>
   );
 }

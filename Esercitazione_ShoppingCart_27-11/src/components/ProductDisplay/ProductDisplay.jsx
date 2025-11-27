@@ -1,6 +1,4 @@
-import { prodotti } from "../../mock/products";
-
-export function ProductDisplay({ product, onAddItem }) {
+export default function ProductDisplay({ product, onAddItem }) {
   return (
     <div className="product">
       <h3>{product.name}</h3>
