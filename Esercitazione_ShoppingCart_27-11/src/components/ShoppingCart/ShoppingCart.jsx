@@ -10,6 +10,7 @@ export function ShoppingCart({ items }) {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+  const updateQuantity = (productId) => {};
 
   return (
     <div className="shopping-cart">

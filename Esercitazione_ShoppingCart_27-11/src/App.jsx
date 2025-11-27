@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [items, setItems] = useState([]);
+  console.log(items);
   return (
     <>
       <ShowCase prodotti={prodotti} items={items} setItems={setItems} />
