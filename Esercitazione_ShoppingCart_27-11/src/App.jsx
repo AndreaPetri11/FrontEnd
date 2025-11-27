@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <ShowCase prodotti={prodotti} items={items} setItems={setItems} />
-      <ShoppingCart items={items} />
+      <ShoppingCart items={items} setItems={setItems} />
     </>
   );
 }

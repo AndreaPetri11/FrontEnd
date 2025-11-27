@@ -1,12 +1,13 @@
-function CartItem({ item, onUpdateQuantity }) {
+function CartItem({ item, onIncreaseQuantity, onDecreaseQuantity }) {
   return (
     <>
       <h3>Name: {item.name}</h3>
       <p>Price: {item.price}</p>
-      <p>Quantity: {item.quantity}</p>
       <p>Category: {item.category}</p>
-      <button onClick={()=>}></button>
-      <p></p>
+      <br></br>
+      <p>Quantity: {item.quantity}</p>
+      <button onClick={() => onDecreaseQuantity(item)}>-</button>
+      <button onClick={() => onIncreaseQuantity(item)}>+</button>
     </>
   );
 }

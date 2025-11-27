@@ -1,6 +1,7 @@
 import { useState } from "react";
+import CartItem from "./CartItem/CartItem";
 
-export function ShoppingCart({ items }) {
+export function ShoppingCart({ items, setItems }) {
   // State per gestire il carrello
 
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,33 @@ export function ShoppingCart({ items }) {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const updateQuantity = (productId) => {};
+  const increaseQuantity = (product) => {
+    if (items.find((p) => p.id == product.id)) {
+      setItems((items) =>
+        items.map((p) =>
+          p.id == product.id ? { ...p, quantity: p.quantity + 1 } : p
+        )
+      );
+    } else {
+      setItems((items) => [...items, product]);
+    }
+  };
+
+  const decreaseQuantity = (product) => {
+    if (items.find((p) => p.id == product.id)) {
+      setItems((items) =>
+        items
+          .map((p) =>
+            p.id == product.id
+              ? { ...p, quantity: Math.max(0, p.quantity - 1) }
+              : p
+          )
+          .filter((p) => p.quantity > 0)
+      );
+    } else {
+      setItems((items) => [...items, product]);
+    }
+  };
 
   return (
     <div className="shopping-cart">
@@ -28,7 +55,8 @@ export function ShoppingCart({ items }) {
                 <CartItem
                   key={item.id}
                   item={item}
-                  onUpdateQuantity={updateQuantity}
+                  onIncreaseQuantity={increaseQuantity}
+                  onDecreaseQuantity={decreaseQuantity}
                 />
               ))}
               <div className="cart-total">Totale: €{total.toFixed(2)}</div>
