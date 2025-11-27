@@ -1,5 +1,5 @@
 import ProductDisplay from "../ProductDisplay/ProductDisplay";
-
+import "./ShowCase.css";
 export default function ShowCase({ prodotti, onAddItem, items, setItems }) {
   // Logica per aggiungere prodotti
   const addItem = (product) => {
@@ -18,7 +18,7 @@ export default function ShowCase({ prodotti, onAddItem, items, setItems }) {
     }
   };
   return (
-    <div>
+    <div className="container-showcase">
       <h2>Prodotti</h2>
       {prodotti.map((p) => (
         <ProductDisplay key={p.id} product={p} onAddItem={addItem} />
