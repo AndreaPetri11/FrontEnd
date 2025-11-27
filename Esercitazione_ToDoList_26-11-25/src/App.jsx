@@ -13,26 +13,26 @@ function App() {
     category: "",
   });
 
-  const [punti, setPuntiLista] = useState([]);
+  const [punti, setPunti] = useState([]);
 
   const addPunto = () => {
     if (!action.name || !action.description || !action.category) return;
-    setPuntiLista([...punti, action]);
+    setPunti([...punti, action]);
     setAction({ name: "", description: "", category: "" });
   };
 
   const deletePunto = (index) => {
     const nuoviPunti = [...punti];
     nuoviPunti.splice(index, 1);
-    setPuntiLista(nuoviPunti);
+    setPunti(nuoviPunti);
   };
 
   return (
     <div>
       <AddOnList action={action} onUpdateList={setAction} addPunto={addPunto} />
       <Aggiungi onClick={addPunto} />
-      <CancellaTutto onClick={() => setPuntiLista([])} />
-      <TodoList puntiLista={punti} onDelete={deletePunto} />
+      <CancellaTutto onClick={() => setPunti([])} />
+      <TodoList punti={punti} onDelete={deletePunto} />
     </div>
   );
 }

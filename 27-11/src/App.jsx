@@ -1,9 +1,12 @@
-import { useState } from "react";
-
+import WelcomeCard from "./components/WelcomeCard/WelcomeCard";
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <WelcomeCard name="Gino" age={18} isVip={true} />
+    </>
+  );
 }
 
 export default App;

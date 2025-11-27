@@ -1,6 +1,6 @@
 import "./Button.css";
 
-export default function Aggiungi({ onClick }) {
+export function Aggiungi({ onClick }) {
   return (
     <button className="btn-add" onClick={onClick}>
       Aggiungi alla lista
@@ -8,7 +8,7 @@ export default function Aggiungi({ onClick }) {
   );
 }
 
-export default function Cancella({ onClick }) {
+export function Cancella({ onClick }) {
   return (
     <button className="btn-delete" onClick={onClick}>
       X
@@ -16,7 +16,7 @@ export default function Cancella({ onClick }) {
   );
 }
 
-export default function CancellaTutto({ onClick }) {
+export function CancellaTutto({ onClick }) {
   return (
     <button className="btn-deleteAll" onClick={onClick}>
       Cancella tutto

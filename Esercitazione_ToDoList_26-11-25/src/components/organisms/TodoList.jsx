@@ -1,12 +1,12 @@
 import "./TodoList.css";
 import { Cancella } from "../atoms/Button.jsx";
 
-function TodoList({ puntiLista, onDelete }) {
+function TodoList({ punti, onDelete }) {
   return (
     <div>
       <h3>My To Do List:</h3>
       <ul>
-        {puntiLista.map((punto, index) => (
+        {punti.map((punto, index) => (
           <li key={index}>
             <strong>Titolo: </strong> {punto.name} <br></br>
             <strong>Decrizione:</strong> {punto.description} <br></br>
