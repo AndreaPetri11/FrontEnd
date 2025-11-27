@@ -34,8 +34,6 @@ export function ShoppingCart({ items, setItems }) {
           )
           .filter((p) => p.quantity > 0)
       );
-    } else {
-      setItems((items) => [...items, product]);
     }
   };
 
