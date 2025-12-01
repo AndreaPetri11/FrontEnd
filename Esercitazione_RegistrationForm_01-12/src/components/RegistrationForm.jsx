@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "../hooks/useForm";
+import "./RegistrationForm.css";
 
 export function RegistrationForm() {
   const {
