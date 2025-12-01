@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useForm } from "../hooks/useForm";
 
 export function RegistrationForm() {
-  const [formData, setFormData] = useState({
+  const {
+    values: formData,
+    setValue,
+    reset,
+  } = useForm({
     name: "",
     lastName: "",
     username: "",
@@ -15,11 +20,6 @@ export function RegistrationForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Funzione per aggiornare i valori dei campi
-  const updateField = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
   const handleKeyDown = (event, field) => {
     const textFields = [
       "name",
@@ -31,7 +31,7 @@ export function RegistrationForm() {
     ];
 
     if (event.key === "Escape" && textFields.includes(field)) {
-      updateField(field, "");
+      setValue(field, "");
     }
   };
 
@@ -64,18 +64,7 @@ export function RegistrationForm() {
       console.log("Dati validi:", dataToLog);
       alert("Registrazione effettuata con successo!");
 
-      // RESET DEL FORM
-      setFormData({
-        name: "",
-        lastName: "",
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        country: "",
-        gender: "",
-        newsletter: false,
-      });
+      reset(); //reset del form tramite hook
 
       setIsSubmitting(false);
     }, 2000);
@@ -88,66 +77,72 @@ export function RegistrationForm() {
         <input
           type="text"
           value={formData.name}
-          onChange={(e) => updateField("name", e.target.value)}
+          onChange={(e) => setValue("name", e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, "name")}
+          placeholder="inserisci qua il tuo nome"
         />
       </div>
-
+      <br />
       <div>
         <label>Cognome:</label>
         <input
           type="text"
           value={formData.lastName}
-          onChange={(e) => updateField("lastName", e.target.value)}
+          onChange={(e) => setValue("lastName", e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, "lastName")}
+          placeholder="inserisci qua il tuo cognome"
         />
       </div>
-
+      <br />
       <div>
         <label>Username:</label>
         <input
           type="text"
           value={formData.username}
-          onChange={(e) => updateField("username", e.target.value)}
+          onChange={(e) => setValue("username", e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, "username")}
+          placeholder="inserisci qua il tuo username"
         />
       </div>
-
+      <br />
       <div>
         <label>Email:</label>
         <input
           type="email"
           value={formData.email}
-          onChange={(e) => updateField("email", e.target.value)}
+          onChange={(e) => setValue("email", e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, "email")}
+          placeholder="inserisci qua la tua email"
         />
       </div>
-
+      <br />
       <div>
         <label>Password:</label>
         <input
           type="password"
           value={formData.password}
-          onChange={(e) => updateField("password", e.target.value)}
+          onChange={(e) => setValue("password", e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, "password")}
+          placeholder="inserisci una password valida"
         />
       </div>
-
+      <br />
       <div>
         <label>Conferma Password:</label>
         <input
           type="password"
           value={formData.confirmPassword}
-          onChange={(e) => updateField("confirmPassword", e.target.value)}
+          onChange={(e) => setValue("confirmPassword", e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, "confirmPassword")}
+          placeholder="conferma la tua password"
         />
       </div>
-
+      <br />
       <div>
         <label>Paese:</label>
         <select
           value={formData.country}
-          onChange={(e) => updateField("country", e.target.value)}
+          onChange={(e) => setValue("country", e.target.value)}
         >
           <option value="">Seleziona un paese</option>
           <option value="italy">Italia</option>
@@ -165,7 +160,7 @@ export function RegistrationForm() {
           <option value="finland">Finlandia</option>
         </select>
       </div>
-
+      <br />
       <div>
         <label>Genere:</label>
         <label>
@@ -173,7 +168,7 @@ export function RegistrationForm() {
             type="radio"
             value="male"
             checked={formData.gender === "male"}
-            onChange={(e) => updateField("gender", e.target.value)}
+            onChange={(e) => setValue("gender", e.target.value)}
           />
           Male
         </label>
@@ -182,23 +177,32 @@ export function RegistrationForm() {
             type="radio"
             value="female"
             checked={formData.gender === "female"}
-            onChange={(e) => updateField("gender", e.target.value)}
+            onChange={(e) => setValue("gender", e.target.value)}
           />
           Female
         </label>
+        <label>
+          <input
+            type="radio"
+            value="none"
+            checked={formData.gender === "none"}
+            onChange={(e) => setValue("gender", e.target.value)}
+          />
+          "Vengo dalla Luna"
+        </label>
       </div>
-
+      <br />
       <div>
         <label>
           <input
             type="checkbox"
             checked={formData.newsletter}
-            onChange={(e) => updateField("newsletter", e.target.checked)}
+            onChange={(e) => setValue("newsletter", e.target.checked)}
           />
           Iscriviti alla newsletter
         </label>
       </div>
-
+      <br />
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Registrazione in corso..." : "Registrati"}
       </button>
