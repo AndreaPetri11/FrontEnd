@@ -170,7 +170,7 @@ export function RegistrationForm() {
             checked={formData.gender === "male"}
             onChange={(e) => setValue("gender", e.target.value)}
           />
-          Male
+          Maschio
         </label>
         <label>
           <input
@@ -179,7 +179,7 @@ export function RegistrationForm() {
             checked={formData.gender === "female"}
             onChange={(e) => setValue("gender", e.target.value)}
           />
-          Female
+          Femmina
         </label>
         <label>
           <input
