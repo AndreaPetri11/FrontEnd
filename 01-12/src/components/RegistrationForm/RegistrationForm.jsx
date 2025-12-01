@@ -150,7 +150,7 @@ export function RegistrationForm() {
 
   // Determina lo stile dei campi
   const getFieldStyle = (field) => {
-    // Se il form è valido, tutti i campi diventano verdi con glow
+    // Se il form è valido, tutti i campi diventano verdi
     if (success) {
       return {
         border: "2px solid green",

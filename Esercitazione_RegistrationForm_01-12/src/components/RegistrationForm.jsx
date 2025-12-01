@@ -59,11 +59,10 @@ export function RegistrationForm() {
 
     setIsSubmitting(true);
 
-    // Dopo 2 secondi resetta il form
     setTimeout(() => {
       const { confirmPassword, ...dataToLog } = formData;
       console.log("Dati validi:", dataToLog);
-      alert("Registrazione effettuata!");
+      alert("Registrazione effettuata con successo!");
 
       // RESET DEL FORM
       setFormData({
