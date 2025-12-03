@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPosts } from "../api/fetchPosts";
+import fetchPosts from "../../api/fetchPosts";
 
 export default function RealAPIExample() {
   const [posts, setPosts] = useState([]);
@@ -11,7 +11,6 @@ export default function RealAPIExample() {
       try {
         setLoading(true);
         const data = await fetchPosts();
-        console.log("Posts nel componente:", data);
         setPosts(data);
       } catch (err) {
         setError(err.message);
@@ -20,7 +19,7 @@ export default function RealAPIExample() {
       }
     };
     loadPosts();
-  }, []); // Solo al mount
+  }, []);
 
   if (loading) return <div>Caricamento posts...</div>;
   if (error) return <div>Errore: {error}</div>;

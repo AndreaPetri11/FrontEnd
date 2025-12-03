@@ -1,19 +1,18 @@
-export const fetchPosts = async () => {
+export default async function fetchPosts() {
   try {
-    // Chiamata a API reale
     const response = await fetch(
       "https://jsonplaceholder.typicode.com/posts?_limit=99"
     );
 
-    // Verifica se la risposta è ok
+    // Controllo errore HTTP
     if (!response.ok) {
       throw new Error(`Errore HTTP: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log("Posts caricati:", data);
     return data;
   } catch (err) {
-    return err.message;
+    // Rilancia l'errore, NON restituire err.message!
+    throw err;
   }
-};
+}
