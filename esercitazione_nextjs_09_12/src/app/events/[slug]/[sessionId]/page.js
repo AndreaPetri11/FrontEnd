@@ -1,5 +1,15 @@
-import { getEventBySlug, getSession } from "@/lib/events";
+import { getEventBySlug, getSession, events } from "@/lib/events";
 import { notFound } from "next/navigation";
+
+export function generateStaticParams() {
+  const paths = [];
+  events.forEach((e) => {
+    e.program.forEach((session) => {
+      paths.push({ slug: e.slug, sessionId: session.sessionId });
+    });
+  });
+  return paths;
+}
 
 export default async function SessionPage({ params }) {
   const { slug, sessionId } = await params;

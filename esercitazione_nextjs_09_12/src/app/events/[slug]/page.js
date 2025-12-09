@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { getEventBySlug } from "../../../lib/events";
 import { notFound } from "next/navigation";
+import { events } from "../../../lib/events";
+
+export function generateStaticParams() {
+  return events.map((event) => ({
+    slug: event.slug,
+  }));
+}
 
 export default async function EventPage({ params }) {
   const { slug } = await params;
