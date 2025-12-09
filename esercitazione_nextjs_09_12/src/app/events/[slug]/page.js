@@ -12,10 +12,10 @@ export default async function EventPage({ params }) {
         <p>Orario prima lezione: {event.program[0].time}</p>
       </div>
       <section>
-        {event.program.map((session) => (
-          <div key={session.sessionId}>
-            <h3>{session.title}</h3>
-            <Link href={`/events/${slug}/${session.sessionId}`}>Dettagli</Link>
+        {event.program.map((s) => (
+          <div key={s.sessionId}>
+            <h3>{s.title}</h3>
+            <Link href={`/events/${slug}/${s.sessionId}`}>Dettagli</Link>
           </div>
         ))}
       </section>
