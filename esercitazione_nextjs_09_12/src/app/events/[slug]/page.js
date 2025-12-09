@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { getEventBySlug } from "../../../lib/events";
+import { notFound } from "next/navigation";
 
 export default async function EventPage({ params }) {
   const { slug } = await params;
   const event = getEventBySlug(slug);
+
+  if (!event) {
+    notFound();
+  }
   return (
     <main>
       <div>
